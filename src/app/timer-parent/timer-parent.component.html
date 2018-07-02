@@ -1,0 +1,31 @@
+<h3>Speaker Timers</h3>
+
+<div class = "seconds">
+  <label>Total Speaking Time:
+    Minutes:<input type = "number" id = "minutes" value = "0"/>
+    Seconds:<input type = "number" id = "seconds" value = "5"/>
+  </label>
+  <button (click) = "submitTime(getTime())">Submit Time</button>
+  <br>
+  {{seconds()}}
+  <button (click)="start()">Start</button>
+  <button (click)="stop()">Stop</button>
+  <br>
+  <label>Speaker Time:
+    Minutes:<input type = "number" id = "speakerMinutes" value = "0"/>
+    Seconds:<input type = "number" id = "speakerSeconds" value = "5"/>
+  </label>
+  <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
+  <br>
+  {{speakerSeconds()}}
+  <button (click)="startSpeaker()">Start Speaker</button>
+  <button (click)="stopSpeaker()">Pause Speaker</button>
+
+  <app-timer [seconds]="submitTime(getTime())" [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"></app-timer>
+</div>
+
+
+
+<!--<div class="seconds">{{ seconds() }}</div>-->
+
+

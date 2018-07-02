@@ -1,0 +1,19 @@
+<h2>Member States</h2>
+
+<div>
+  <label>Member name:
+    <input #memberName />
+  </label>
+  <button (click)="add(memberName.value); memberName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="members">
+  <li *ngFor="let member of members">
+    <a routerLink="/detail/{{member.id}}">
+      <span class="badge">{{member.id}}</span> {{member.name}}
+    </a>
+    <button class="delete" title="delete member state" (click)="delete(member)">x</button>
+  </li>
+</ul>

@@ -1,0 +1,5 @@
+  <h4>{{name}}</h4>
+  <button (click)="vote(1)"  [disabled]="didVote">For</button>
+  <button (click)="vote(0)" [disabled]="didVote">Against</button>
+  <button (click)="vote(-1)" [disabled] = "didVote">Abstain</button>
+

@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>State Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let member of members$ | async" > <!-- The $ is a convention that indicates members$
+                                                        is an Observable, not an array. -->
+      <a routerLink="/detail/{{member.id}}">
+        {{member.name}}
+      </a>
+    </li>
+  </ul>
+</div>

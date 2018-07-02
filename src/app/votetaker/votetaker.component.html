@@ -1,0 +1,14 @@
+<h2><input type="text" #subjectInput placeholder="Subject of Voting"/></h2> <!-- TODO: FIX --->
+
+<button (click) = "logStartVote(subjectInput.value)">Motion on {{subjectInput.value}}</button> <!-- TODO logStartVote-->
+
+<h3>For: {{agreed}}, Against: {{disagreed}}, Abstain: {{abstained}}</h3>
+
+<app-voter *ngFor="let voter of voters"
+           [name]="voter"
+           (voted)="onVoted($event)">
+</app-voter>
+
+<h3>Result</h3>
+<button (click)="showResult()">Click for Result</button>
+<p id = "ResultOfVote"></p>

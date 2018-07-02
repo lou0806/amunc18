@@ -1,0 +1,33 @@
+<h2>Committee Moderator</h2>
+
+<h2>States Database</h2>
+<ul class="members">
+  <li *ngFor="let member of members">
+    <a>
+      {{member.name}}
+    </a>
+    <button class = "addMember" title = "Add to Members' List" (click)="addMember(member)">+</button>
+  </li>
+</ul>
+
+<h2>Member States</h2>
+<ul class="members">
+  <li *ngFor="let member of membersList">
+    <a>
+      {{member}}
+    </a>
+    <button class = "addSpeaker" title = "Add to Members' List" (click)="addSpeaker(member)">+</button>
+  </li>
+</ul>
+
+<h2>Speakers List</h2>
+<li *ngFor="let speaker of speakersList">
+  <a>{{speaker}}</a>
+  <button class = "removeSpeaker" title = "Remove from Speakers' List" (click)="removeSpeaker(speaker)">x</button>
+</li>
+
+<app-timer-parent-vc></app-timer-parent-vc>
+
+<app-votetaker
+  [voters] = "membersList">
+</app-votetaker>
