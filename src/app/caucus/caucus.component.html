@@ -1,33 +1,58 @@
 <h2>Committee Moderator</h2>
 
-<h2>States Database</h2>
-<ul class="members">
-  <li *ngFor="let member of members">
-    <a>
-      {{member.name}}
-    </a>
-    <button class = "addMember" title = "Add to Members' List" (click)="addMember(member)">+</button>
-  </li>
-</ul>
 
-<h2>Member States</h2>
-<ul class="members">
-  <li *ngFor="let member of membersList">
-    <a>
-      {{member}}
-    </a>
-    <button class = "addSpeaker" title = "Add to Members' List" (click)="addSpeaker(member)">+</button>
-  </li>
-</ul>
+  <div class = "row">
+    <div class = "column">
+    <mat-tab-group>
+      <mat-tab label="States">
+          <h2>States Database</h2>
+          <app-member-search></app-member-search>
+          <ul class="members"  style="overflow:scroll;   height:400px;">
+            <li *ngFor="let member of members">
+              <a>
+                {{member.name}}
+              </a>
+              <button class = "addMember"
+                title = "Add to Members' List"
+                (click)="addMember(member)"
+                [disabled] = "addedAlready(member)">
+                +
+              </button>
+            </li>
+          </ul>
+      </mat-tab>
+      <mat-tab label="Members">
+          <h2>Member States</h2>
+          <ul class="members">
+            <li *ngFor="let member of membersList">
+              <a>
+                {{member}}
+              </a>
+              <button class = "addSpeaker" title = "Add to Speakers' List" (click)="addSpeaker(member)">+</button>
+            </li>
+          </ul>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 
-<h2>Speakers List</h2>
-<li *ngFor="let speaker of speakersList">
-  <a>{{speaker}}</a>
-  <button class = "removeSpeaker" title = "Remove from Speakers' List" (click)="removeSpeaker(speaker)">x</button>
-</li>
+    <div class = "column">
+      <mat-tab-group>
+        <mat-tab label="Voting">
+          <app-votetaker
+            [voters] = "membersList">
+          </app-votetaker>
+        </mat-tab>
+        <mat-tab label="Speakers">
+          <li *ngFor="let member of speakersList">
+            <a>{{member}}</a>
+            <button class = "removeSpeaker" title = "Remove from Speakers' List" (click)="removeSpeaker(speaker)">x</button>
+          </li>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
 
-<app-timer-parent-vc></app-timer-parent-vc>
-
-<app-votetaker
-  [voters] = "membersList">
-</app-votetaker>
+    <div class = "column">
+      <app-timer-parent-vc>
+      </app-timer-parent-vc>
+    </div>
+    </div>

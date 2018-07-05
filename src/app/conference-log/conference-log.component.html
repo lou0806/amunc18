@@ -1,3 +1,25 @@
-<p>
-  conference-log works!
-</p>
+<h2>Timer Log</h2>
+
+<div *ngIf="logService.logTimer.length">
+  <h2>Timer Messages</h2>
+  <button class="clear"
+          (click)="logService.clearLogTimer()">clear</button>
+  <div *ngFor='let TimerData of logService.logTimer'> {{TimerData}} </div>
+</div>
+
+<h2>Speakers' Log</h2>
+
+<div *ngIf="logService.logSpeaker.length">
+  <h2>Speakers' Log</h2>
+  <button class="clear"
+          (click)="logService.clearSpeakersLog()">clear</button>
+  <div *ngFor="let TimerData of logService.logSpeaker"> {{TimerData}} </div>
+</div>
+
+<h2>Motions Log</h2>
+<div *ngIf="logService.logMotion.length">
+  <h2>Motions Log</h2>
+  <button class="clear"
+          (click)="logService.clearMotionsLog()">clear</button>
+  <div *ngFor="let TimerData of logService.logMotion"> {{TimerData}} </div>
+</div>

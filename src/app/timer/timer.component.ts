@@ -1,5 +1,6 @@
-import { Input, Component, OnInit, OnDestroy, Output } from '@angular/core';
+import {Input, Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { CaucusComponent } from '../caucus/caucus.component';
+import { LogService } from '../log.service';
 
 @Component({
   selector: 'app-timer',
@@ -11,9 +12,12 @@ export class TimerComponent implements OnInit, OnDestroy {
   @Input() speakerSeconds: number;
   @Input() seconds: number;
 
-  varSpeaker: number;
+  varSpeaker = this.speakerSeconds;
 
-  constructor (private caucusComponent: CaucusComponent) {}
+  constructor (
+    private caucusComponent: CaucusComponent,
+    private logService: LogService,
+  ) {}
 
   intervalId = 0;
   intervalId2 = 0;
@@ -41,19 +45,25 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.clearTimer2();
   }
 
+  skipSpeaker() {
+    this.caucusComponent.logTimer(this.varSpeaker);
+    this.caucusComponent.removeSpeakerTop(); // TODO: Log the speaker LIVE
+    this.speakerSeconds = this.varSpeaker;
+  }
+
   // TODO HERE: skip to next speaker when speaker timer finishes, so remove top from array of speakers
   private speakerCountDown() {
-    this.clearTimer2();
     this.varSpeaker = this.speakerSeconds;
     this.intervalId2 = window.setInterval(() => {
       this.speakerSeconds -= 1;
       if (this.speakerSeconds === 0) {
         this.message = 'Time up';
+        this.caucusComponent.logTimer(this.varSpeaker);
         this.caucusComponent.removeSpeakerTop();
       } else if (this.speakerSeconds < 0) {
-        this.message = '';
+        this.message = ''; // TODO: show who is speaking now
+        this.speakerSeconds = this.varSpeaker; // TODO: doesnt reset properly to original speakerSeconds
         this.clearTimer2();
-        this.speakerSeconds = this.varSpeaker; // TODO: This resets, probably don't want (fixed it?)
       }
     }, 1000);
   }
@@ -67,8 +77,8 @@ export class TimerComponent implements OnInit, OnDestroy {
         this.message = 'Motion Time Up';
       } else if (this.seconds < 0) {
         this.message = '';
-        this.clearTimer();
         this.seconds = this.varSpeaker;
+        this.clearTimer();
       }
     }, 1000);
   }

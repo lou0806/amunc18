@@ -122,6 +122,42 @@ button.delete {
   border-radius: 4px 0 0 4px;
 }
 
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 27.00%;
+  padding: 10px;
+  height:400px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Styles for tab labels */
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
 
 
 /*

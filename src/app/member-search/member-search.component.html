@@ -6,9 +6,13 @@
   <ul class="search-result">
     <li *ngFor="let member of members$ | async" > <!-- The $ is a convention that indicates members$
                                                         is an Observable, not an array. -->
-      <a routerLink="/detail/{{member.id}}">
-        {{member.name}}
-      </a>
+      <button
+        class = "addMember"
+        title = "Add to Members' List"
+        (click)="caucusComponent.addMember(member)"
+        [disabled] = "caucusComponent.addedAlready(member)">
+      {{member.name}}
+      </button>
     </li>
   </ul>
 </div>

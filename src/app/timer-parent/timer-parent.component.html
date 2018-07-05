@@ -20,8 +20,12 @@
   {{speakerSeconds()}}
   <button (click)="startSpeaker()">Start Speaker</button>
   <button (click)="stopSpeaker()">Pause Speaker</button>
+  <button (click)="skipSpeaker()">Skip Speaker</button>
 
-  <app-timer [seconds]="submitTime(getTime())" [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"></app-timer>
+  <app-timer
+    [seconds]="submitTime(getTime())"
+    [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"
+  ></app-timer>
 </div>
 
 

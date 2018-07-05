@@ -1,6 +1,8 @@
-import { AfterViewInit, ViewChild } from '@angular/core';
+import {AfterViewInit, EventEmitter, ViewChild} from '@angular/core';
 import { Component } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
+import { Input, Output } from '@angular/core';
+import { LogService } from '../log.service';
 
 //// View Child version
 @Component({
@@ -29,6 +31,7 @@ export class TimerParentComponent implements AfterViewInit {
 
   startSpeaker() { this.timerComponent.startSpeaker(); }
   stopSpeaker() {this.timerComponent.stopSpeaker(); }
+  skipSpeaker() {this.timerComponent.skipSpeaker(); }
 
   getTime(): number {
    const minutesRecorded = (<HTMLInputElement>document.getElementById('minutes')).value;

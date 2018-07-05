@@ -1,6 +1,11 @@
-<h2><input type="text" #subjectInput placeholder="Subject of Voting"/></h2> <!-- TODO: FIX --->
+<h2><input type="text" #subjectInput placeholder="Input Motion Here"/></h2> <!-- TODO: FIX --->
 
-<button (click) = "logStartVote(subjectInput.value)">Motion on {{subjectInput.value}}</button> <!-- TODO logStartVote-->
+<button
+  (click) = "showSubject(subjectInput.value)"
+>Confirm Motion</button>
+<h2 id = "SubjectOfVote"> </h2>
+
+<button>Start Vote</button> <!-- TODO: Make flashier, START VOTE ON...-->
 
 <h3>For: {{agreed}}, Against: {{disagreed}}, Abstain: {{abstained}}</h3>
 
@@ -12,3 +17,6 @@
 <h3>Result</h3>
 <button (click)="showResult()">Click for Result</button>
 <p id = "ResultOfVote"></p>
+<button
+  (click)="resetVote()">
+  Reset Vote</button> <!-- TODO: FIX -->

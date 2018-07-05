@@ -8,9 +8,8 @@ import { LogService } from '../log.service';
 })
 export class ConferenceLogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public logService: LogService) { }
 
   ngOnInit() {
   }
-
 }

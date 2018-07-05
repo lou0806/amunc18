@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatTabsModule} from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -37,6 +39,8 @@ import {VotetakerComponent} from './votetaker/votetaker.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

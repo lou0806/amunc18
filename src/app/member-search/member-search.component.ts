@@ -7,6 +7,8 @@ import { debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {Member} from '../member';
 import { MemberService} from '../member.service';
 
+import { CaucusComponent } from '../caucus/caucus.component';
+
 @Component({
   selector: 'app-member-search',
   templateUrl: './member-search.component.html',
@@ -18,7 +20,10 @@ export class MemberSearchComponent implements OnInit {
   members$: Observable<Member[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private memberService: MemberService) { }
+  constructor(
+    private memberService: MemberService,
+    private caucusComponent: CaucusComponent,
+  ) { }
 
   search(term: string): void{
     this.searchTerms.next(term);

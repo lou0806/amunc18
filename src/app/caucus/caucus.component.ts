@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Member } from '../member';
 import {MemberService} from '../member.service';
@@ -8,12 +8,17 @@ import {TimerComponent} from '../timer/timer.component';
 import {TimerParentComponent} from '../timer-parent/timer-parent.component';
 
 import {LogService} from '../log.service';
+import { MemberSearchComponent} from '../member-search/member-search.component';
+
+import {HttpHeaders, HttpClient} from '@angular/common/http';
+import {MatTabsModule} from '@angular/material';
 
 @Component({
   selector: 'app-caucus',
   templateUrl: './caucus.component.html',
   styleUrls: ['./caucus.component.css'],
   providers: [CaucusService],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class CaucusComponent implements OnInit {
@@ -25,6 +30,7 @@ export class CaucusComponent implements OnInit {
   constructor(
     private memberService: MemberService,
     private caucusService: CaucusService,
+    private logService: LogService,
   ) { }
 
   ngOnInit() {
@@ -38,17 +44,42 @@ export class CaucusComponent implements OnInit {
 
   addMember(member: Member) {
     this.membersList.push(`${member.name}`);
-  } /*Disable ability to add member after adding it*/
+  } /* FIXME: Disable ability to add member after adding it*/
 
   addSpeaker(member: string) {
     this.speakersList.push(member);
   }
 
+  addedAlready(member: Member): boolean {
+    if (Object.values(this.membersList).includes(member.name)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   removeSpeakerTop() {
+    this.logSpeaker(this.speakersList[0]);
     this.speakersList.shift();
-  } /* TODO: For autoupdate*/
+  } /* FIXME: For auto update*/
 
   removeSpeaker(speaker: string) {
     this.speakersList.splice(this.speakersList.lastIndexOf(speaker), 1); // TODO: FIX THE DUPLICATE PROBLEM
+  } // FIXME: INPUT WITH TIME FOR LOGGING REASONS, doesn't seem to need it??
+
+
+  public logSpeaker(message: string) {
+    this.logService.updateSpeakersLog('Log Speaker: ' + message); /*TODO: test if works*/
+  } /* TODO: Yielding?*/
+
+  public logTimer(message: number) {
+    this.logService.updateLogTimer(message);
   }
+
+  public logMotion (message: string) {
+    this.logService.updateMotionLog(message);
+  } // TODO: log the motions (FIXED?)
+
+  // TODO: MOderated and Unmoderated Indicators
+
 }

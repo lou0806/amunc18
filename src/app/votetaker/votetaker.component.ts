@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { CaucusComponent } from '../caucus/caucus.component';
+import {VoterComponent} from '../voter/voter.component';
+import {VoterService} from '../voter.service';
+import { LogService } from '../log.service';
 
 @Component({
   selector: 'app-votetaker',
@@ -8,6 +12,16 @@ export class VotetakerComponent {
   agreed = 0;
   disagreed = 0;
   abstained = 0;
+
+  varVote = false;
+  private logService: LogService;
+
+  @ViewChild(VoterComponent)
+  private voterComponent: VoterComponent;
+
+  constructor (
+    private caucusComponent: CaucusComponent
+  ) {}
 
   @Input() voters: string[];
 
@@ -29,9 +43,19 @@ export class VotetakerComponent {
     } else if (this.agreed === this.disagreed) {
       document.getElementById('ResultOfVote').innerHTML = 'Tie!';
     }
+  } // TODO: Log Result
+
+  showSubject(input: string): void {
+    this.caucusComponent.logMotion(input);
+    document.getElementById('SubjectOfVote').innerHTML = 'Voting On:' + input;
   }
 
-  /*logStartVote() {
+  resetVote() {
+    this.agreed = 0;
+    this.disagreed = 0;
+    this.abstained = 0;
+    this.varVote = true;
+ /* TODO: FIX, SO FAR ONLY RESETS FIRST ONE UPDATE: CHANGED*/
+  }
 
-  }*/
 }
