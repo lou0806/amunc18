@@ -58,7 +58,7 @@ export class MemberService {
     );
   }
 
-  deleteMember(member: Member | number): Observable<Member> {
+/*  deleteMember(member: Member | number): Observable<Member> {
     const id = typeof Member === 'number' ? member : member.id;
     const url = `${this.membersUrl}/${id}`;
 
@@ -66,7 +66,7 @@ export class MemberService {
       tap(_ => this.log (`deleted member id = ${id}`)),
       catchError(this.handleError<Member>('deleteMember'))
     );
-  }
+  }*/
 
   searchMembers(term: string): Observable<Member[]> {
     if (!term.trim()) {

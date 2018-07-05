@@ -72,8 +72,8 @@ export class CaucusComponent implements OnInit {
     this.logService.updateSpeakersLog('Log Speaker: ' + message); /*TODO: test if works*/
   } /* TODO: Yielding?*/
 
-  public logTimer(message: number) {
-    this.logService.updateLogTimer(message);
+  public logTimer(input: number) {
+    this.logService.updateLogTimer(input);
   }
 
   public logMotion (message: string) {
