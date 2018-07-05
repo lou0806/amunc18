@@ -1,1 +1,5 @@
-<h3>Test</h3>
+<h1>Committees</h1>
+<a *ngFor="let committee of committees"
+   routerLink="/committees/{{committee.no}}">
+  <h4>{{committee.name}}</h4>
+</a>

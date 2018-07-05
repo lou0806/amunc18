@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberDetailComponent} from './member-detail/member-detail.component';
 import {CaucusComponent} from './caucus/caucus.component';
 import {ConferenceLogComponent} from './conference-log/conference-log.component';
+import {CommitteesComponent} from './committees/committees.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'members', component: MembersComponent },
   { path: 'caucus', component: CaucusComponent},
   { path: 'data', component: ConferenceLogComponent},
+  { path: 'committees/:no', component: CommitteesComponent} // TODO: FIX ROUTING on this
 ]; // defined array of Routes as routes, declares before the decorator @NgModule
 
 @NgModule({

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Member} from '../member';
 import { MemberService } from '../member.service';
+import { Committee} from '../committees';
+import {CommitteesService} from '../committees.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +11,21 @@ import { MemberService } from '../member.service';
 })
 export class DashboardComponent implements OnInit {
   members: Member[] = [];
+  committees: Committee[] = [];
 
-  constructor(private memberService: MemberService) { }
+  constructor(
+    private memberService: MemberService,
+    private committeeService: CommitteesService,
+  ) { }
 
   ngOnInit() {
     this.getMembers();
+    this.getCommittees();
+  }
+
+  getCommittees(): void {
+    this.committeeService.getCommittees()
+      .subscribe(committees => this.committees = committees);
   }
 
   getMembers(): void {

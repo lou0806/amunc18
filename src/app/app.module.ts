@@ -21,6 +21,7 @@ import { TimerParentComponent } from './timer-parent/timer-parent.component';
 import { ConferenceLogComponent } from './conference-log/conference-log.component';
 import { VoterComponent } from './voter/voter.component';
 import {VotetakerComponent} from './votetaker/votetaker.component';
+import { CommitteesComponent } from './committees/committees.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {VotetakerComponent} from './votetaker/votetaker.component';
     ConferenceLogComponent,
     VoterComponent,
     VotetakerComponent,
+    CommitteesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import {VotetakerComponent} from './votetaker/votetaker.component';
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false} /* The forRoot() configuration method takes an
+      InMemoryDataService, /* The forRoot() configuration method takes an
                                                          InMemoryDataService class that primes the in-memory database.*/
     ),
   ],

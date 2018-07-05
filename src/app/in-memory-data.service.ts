@@ -197,7 +197,27 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 203, name: 'Zambia' },
       { id: 204, name: 'Zimbabwe' },
     ];
-    return {members};
+
+    const committees = [
+      { no: 1, id: 'GA1', name: 'General Assesmbly 1'},
+      { no: 2, id: 'GA2', name: 'General Assembly 2'},
+      { no: 3, id: 'GA3', name: 'General Assembly 3'},
+      { no: 4, id: 'GA4', name: 'General Assembly 4'},
+      { no: 5, id: 'GA6', name: 'General Assembly 5'},
+      { no: 6, id: 'APS', name: 'General Assembly 6'},
+      { no: 7, id: 'ASE', name: 'Asia-Pacific Summit'},
+      { no: 8, id: 'SCO', name: 'ASEAN'},
+      { no: 9, id: 'CSW', name: 'Shanghai Cooperation Organization'},
+      { no: 10, id: 'HCR', name: 'UN Commission on the Status of Women'},
+      { no: 11, id: 'USC', name: 'UN High Commissioner of Refugees'},
+      { no: 12, id: 'UDP', name: 'UN Security Council'},
+      { no: 13, id: 'WHO', name: 'UN Development Programme'},
+      { no: 14, id: 'AAU', name: 'World Health Organization'},
+      { no: 15, id: 'ROA', name: 'African Union'},
+      { no: 16, id: 'CR1', name: 'Roaming Delegates'},
+      { no: 17, id: 'CR2', name: 'Katanga Crisis'},
+    ];
+    return {members, committees};
   }
   /*createDbCommittees() {
     const committees [
@@ -221,4 +241,4 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     return committees;
   }*/
-}
+ }

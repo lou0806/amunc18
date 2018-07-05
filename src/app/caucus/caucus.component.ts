@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Committee } from '../committees';
 
 import { Member } from '../member';
 import {MemberService} from '../member.service';
@@ -26,6 +27,8 @@ export class CaucusComponent implements OnInit {
   members: Member[];
   speakersList: string[] = [];
   membersList: string[] = [];
+
+  // TODO: Make unique committee logs
 
   constructor(
     private memberService: MemberService,

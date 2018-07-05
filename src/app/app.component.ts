@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Test Run';
+  title = 'The Asia Pacific Model United Nations Conference 2018';
 }
