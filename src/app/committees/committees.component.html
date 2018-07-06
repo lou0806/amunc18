@@ -1,10 +1,8 @@
-<h1>Always Header</h1>
-<h1>{{checkParse()}} Checking if it's parsing the url properly</h1>
-<h2>{{committeeParse.name}} is the Parsed Name</h2>
-<h2>{{committee.name}}</h2><h2>Id</h2>
-
-<div *ngIf="committee">
-  <h1>Top Header</h1>
+<div *ngIf="committees[checkParse()]">
+  <h1>{{committees[checkParse()].name}}</h1>
+  <app-caucus
+    [committeeName]="committees[checkParse()].name"
+  ></app-caucus>
 </div>
 
 <!--

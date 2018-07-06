@@ -25,6 +25,7 @@ import {MatTabsModule} from '@angular/material';
 })
 
 export class CaucusComponent implements OnInit {
+  @Input() committeeName: string;
 
   members: Member[];
   speakersList: string[] = [];

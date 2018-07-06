@@ -12,8 +12,10 @@ import { CommitteesService} from '../committees.service';
 })
 
 export class CommitteesComponent implements OnInit {
-  @Input() committee: Committee;
-  committeeParse: Committee;
+
+  committees: Committee[] = []; // TODO: SEPARATE?
+  x: number;
+  committee: Committee;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,17 +24,26 @@ export class CommitteesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getCommittee();
+    this.getCommittees();
   }
 
-  checkParse(): string {
-    return (this.route.snapshot.paramMap.get('noId'));
+  checkParse(): number {
+    this.x = parseInt(this.route.snapshot.paramMap.get('noId'), 0);
+    return this.x;
   }
 
-  getCommittee(): void {
-    const noId = parseInt(this.route.snapshot.paramMap.get('noId'), 0);
+  /*getCommittee(): void {
+    this.x = 0;
+    this.committee = this.committees[0];
+    /*
+        const noId = parseInt(this.route.snapshot.paramMap.get('noId'), 0);
     this.committeesService.getCommittee(noId)
-      .subscribe(committee => this.committee = committee);
+      .subscribe(committee => this.committee = committee);*/
+  /*}*/
+  getCommittees(): void {
+    this.committeesService.getCommittees()
+      .subscribe(committees => this.committees = committees);
+    /*this.getCommittee();*/
   }
   /*
   ngOnInit() {
