@@ -2,6 +2,26 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
+    const committees = [
+      { noId: 21, abbrev: 'GA1', name: 'General Assembly 1'},
+      { noId: 22, abbrev: 'GA2', name: 'General Assembly 2'},
+      { noId: 23, abbrev: 'GA3', name: 'General Assembly 3'},
+      { noId: 24, abbrev: 'GA4', name: 'General Assembly 4'},
+      { noId: 25, abbrev: 'GA6', name: 'General Assembly 6'},
+      { noId: 27, abbrev: 'APS', name: 'Asia-Pacific Summit'},
+      { noId: 28, abbrev: 'ASE', name: 'ASEAN'},
+      { noId: 29, abbrev: 'SCO', name: 'Shanghai Cooperation Organization'},
+      { noId: 10, abbrev: 'CSW', name: 'UN Commission on the Status of Women'},
+      { noId: 11, abbrev: 'HCR', name: 'UN High Commissioner of Refugees'},
+      { noId: 12, abbrev: 'USC', name: 'UN Security Council'},
+      { noId: 13, abbrev: 'UDP', name: 'UN Development Programme'},
+      { noId: 14, abbrev: 'WHO', name: 'World Health Organization'},
+      { noId: 15, abbrev: 'AAU', name: 'African Union'},
+      { noId: 16, abbrev: 'ROA', name: 'Roaming Delegates'},
+      { noId: 17, abbrev: 'CR1', name: 'Katanga Crisis'},
+      { noId: 18, abbrev: 'CR2', name: 'Syrian Crisis'}
+    ];
+
     const members = [
       { id: 11, name: 'Afghanistan' },
       { id: 12, name: 'Albania' },
@@ -196,26 +216,6 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 202, name: 'Yemen' },
       { id: 203, name: 'Zambia' },
       { id: 204, name: 'Zimbabwe' },
-    ];
-
-    const committees = [
-      { noId: 21, abbrev: 'GA1', name: 'General Assembly 1'},
-      { noId: 22, abbrev: 'GA2', name: 'General Assembly 2'},
-      { noId: 23, abbrev: 'GA3', name: 'General Assembly 3'},
-      { noId: 24, abbrev: 'GA4', name: 'General Assembly 4'},
-      { noId: 25, abbrev: 'GA6', name: 'General Assembly 6'},
-      { noId: 27, abbrev: 'APS', name: 'Asia-Pacific Summit'},
-      { noId: 28, abbrev: 'ASE', name: 'ASEAN'},
-      { noId: 29, abbrev: 'SCO', name: 'Shanghai Cooperation Organization'},
-      { noId: 10, abbrev: 'CSW', name: 'UN Commission on the Status of Women'},
-      { noId: 11, abbrev: 'HCR', name: 'UN High Commissioner of Refugees'},
-      { noId: 12, abbrev: 'USC', name: 'UN Security Council'},
-      { noId: 13, abbrev: 'UDP', name: 'UN Development Programme'},
-      { noId: 14, abbrev: 'WHO', name: 'World Health Organization'},
-      { noId: 15, abbrev: 'AAU', name: 'African Union'},
-      { noId: 16, abbrev: 'ROA', name: 'Roaming Delegates'},
-      { noId: 17, abbrev: 'CR1', name: 'Katanga Crisis'},
-      { noId: 18, abbrev: 'CR2', name: 'Syrian Crisis'}
     ];
     return {committees, members};
   }

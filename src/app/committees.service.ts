@@ -32,7 +32,7 @@ export class CommitteesService {
   getCommittee(noId: number): Observable<Committee> {
     const url = `${this.committeesUrl}/${noId}`;
     return this.http.get<Committee>(url).pipe(
-      tap(_ => this.log(`fetched committee number=${noId}`)),
+      tap(_ => this.log(`fetched committee number = ${noId}`)),
       catchError(this.handleError<Committee>(`getCommittee id=${noId}`))
     );
   }
