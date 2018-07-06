@@ -2,19 +2,19 @@ import {NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MembersComponent} from './members/members.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MemberDetailComponent} from './member-detail/member-detail.component';
 import {CaucusComponent} from './caucus/caucus.component';
 import {ConferenceLogComponent} from './conference-log/conference-log.component';
 import {CommitteesComponent} from './committees/committees.component';
+import {CommitteesFrontComponent} from './committees-front/committees-front.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'detail/:id', component: MemberDetailComponent},
   { path: 'members', component: MembersComponent },
   { path: 'caucus', component: CaucusComponent},
   { path: 'data', component: ConferenceLogComponent},
-  { path: 'committees/:no', component: CommitteesComponent} // TODO: FIX ROUTING on this
+  { path: 'committees', component: CommitteesFrontComponent},
+  { path: 'committee/:noId', component: CommitteesComponent}, // TODO: FIX ROUTING on this
 ]; // defined array of Routes as routes, declares before the decorator @NgModule
 
 @NgModule({

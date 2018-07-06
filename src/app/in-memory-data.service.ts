@@ -199,46 +199,24 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const committees = [
-      { no: 1, id: 'GA1', name: 'General Assesmbly 1'},
-      { no: 2, id: 'GA2', name: 'General Assembly 2'},
-      { no: 3, id: 'GA3', name: 'General Assembly 3'},
-      { no: 4, id: 'GA4', name: 'General Assembly 4'},
-      { no: 5, id: 'GA6', name: 'General Assembly 5'},
-      { no: 6, id: 'APS', name: 'General Assembly 6'},
-      { no: 7, id: 'ASE', name: 'Asia-Pacific Summit'},
-      { no: 8, id: 'SCO', name: 'ASEAN'},
-      { no: 9, id: 'CSW', name: 'Shanghai Cooperation Organization'},
-      { no: 10, id: 'HCR', name: 'UN Commission on the Status of Women'},
-      { no: 11, id: 'USC', name: 'UN High Commissioner of Refugees'},
-      { no: 12, id: 'UDP', name: 'UN Security Council'},
-      { no: 13, id: 'WHO', name: 'UN Development Programme'},
-      { no: 14, id: 'AAU', name: 'World Health Organization'},
-      { no: 15, id: 'ROA', name: 'African Union'},
-      { no: 16, id: 'CR1', name: 'Roaming Delegates'},
-      { no: 17, id: 'CR2', name: 'Katanga Crisis'},
+      { noId: 21, abbrev: 'GA1', name: 'General Assembly 1'},
+      { noId: 22, abbrev: 'GA2', name: 'General Assembly 2'},
+      { noId: 23, abbrev: 'GA3', name: 'General Assembly 3'},
+      { noId: 24, abbrev: 'GA4', name: 'General Assembly 4'},
+      { noId: 25, abbrev: 'GA6', name: 'General Assembly 6'},
+      { noId: 27, abbrev: 'APS', name: 'Asia-Pacific Summit'},
+      { noId: 28, abbrev: 'ASE', name: 'ASEAN'},
+      { noId: 29, abbrev: 'SCO', name: 'Shanghai Cooperation Organization'},
+      { noId: 10, abbrev: 'CSW', name: 'UN Commission on the Status of Women'},
+      { noId: 11, abbrev: 'HCR', name: 'UN High Commissioner of Refugees'},
+      { noId: 12, abbrev: 'USC', name: 'UN Security Council'},
+      { noId: 13, abbrev: 'UDP', name: 'UN Development Programme'},
+      { noId: 14, abbrev: 'WHO', name: 'World Health Organization'},
+      { noId: 15, abbrev: 'AAU', name: 'African Union'},
+      { noId: 16, abbrev: 'ROA', name: 'Roaming Delegates'},
+      { noId: 17, abbrev: 'CR1', name: 'Katanga Crisis'},
+      { noId: 18, abbrev: 'CR2', name: 'Syrian Crisis'}
     ];
-    return {members, committees};
+    return {committees, members};
   }
-  /*createDbCommittees() {
-    const committees [
-      { id: 'GA1', name: 'committee'},
-      { id: 'GA2', name: 'committee'},
-      { id: 'GA3', name: 'committee'},
-      { id: 'GA4', name: 'committee'},
-      { id: 'GA6', name: 'committee'},
-      { id: 'APS', name: 'committee'},
-      { id: 'ASE', name: 'committee'},
-      { id: 'SCO', name: 'committee'},
-      { id: 'CSW', name: 'committee'},
-      { id: 'HCR', name: 'committee'},
-      { id: 'USC', name: 'committee'},
-      { id: 'UDP', name: 'committee'},
-      { id: 'WHO', name: 'committee'},
-      { id: 'AAU', name: 'committee'},
-      { id: 'ROA', name: 'committee'},
-      { id: 'CR1', name: 'committee'},
-      { id: 'CR2', name: 'committee'},
-    ];
-    return committees;
-  }*/
  }

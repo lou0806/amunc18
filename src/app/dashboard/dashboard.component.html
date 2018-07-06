@@ -1,5 +1,8 @@
 <h1>Committees</h1>
-<a *ngFor="let committee of committees"
-   routerLink="/committees/{{committee.no}}">
-  <h4>{{committee.name}}</h4>
-</a>
+<ul class = "committees">
+  <li *ngFor="let committee of committees">
+    <a routerLink="/committee/{{committee.noId}}">
+      <span class="badge">{{committee.name}}</span>{{committee.noId}}{{committee.abbrev}}
+    </a>
+  </li>
+</ul>

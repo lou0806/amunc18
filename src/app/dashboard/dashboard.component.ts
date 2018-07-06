@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Member} from '../member';
 import { MemberService } from '../member.service';
 import { Committee} from '../committees';
-import {CommitteesService} from '../committees.service';
+import { CommitteesService } from '../committees.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMembers();
     this.getCommittees();
+    this.getMembers();
   }
 
   getCommittees(): void {

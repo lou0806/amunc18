@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Committee } from '../committees';
+import { CommitteesComponent } from '../committees/committees.component';
+import { CommitteesService } from '../committees.service';
 
 import { Member } from '../member';
 import {MemberService} from '../member.service';
@@ -29,6 +31,7 @@ export class CaucusComponent implements OnInit {
   membersList: string[] = [];
 
   // TODO: Make unique committee logs
+  // TODO: parent child- relationship between this and committees?
 
   constructor(
     private memberService: MemberService,
