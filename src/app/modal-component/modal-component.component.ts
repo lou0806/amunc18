@@ -31,7 +31,7 @@ export class NgbdModalContent {
   template: `
     <button
         (click)="open()"
-    >Big Timer (not working)</button>
+    >Big Timer (not working) </button>
   `
 })
 export class NgbdModalComponent {
