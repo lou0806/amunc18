@@ -159,16 +159,15 @@ button.delete {
   background-color: green;
 }
 
-#forText, #col1, #col2{
-  z-index: 1;
-}
-
-#col3{
-  z-index: 21;
-}
-
+/*
 .cdk-overlay-container{
   z-index: 9999999000000000;
+}
+*/
+#minutes, #speakerMinutes, #speakerSeconds, #seconds {
+  width: 75px;
+  height: 50px;
+  font-size: 30px;
 }
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

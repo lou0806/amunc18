@@ -91,9 +91,9 @@
 
 
     <div class = "column" id="col3">
-      {{caucusTopic}}
+      <h2>{{committeeName}} Discussing {{caucusTopic}} </h2>
       <app-timer-parent-vc
-        [type]="currentList(caucusTopic)">
+        [type]="currentList(caucusTopic)"> <!-- TODO: Fix this event-->
       </app-timer-parent-vc>
     </div>
   </div>

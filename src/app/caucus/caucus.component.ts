@@ -119,9 +119,8 @@ export class CaucusComponent implements OnInit {
     return caucusTopic;
   }
 
-  submitCaucusTopic(input: string): string {
+  submitCaucusTopic(input: string): void {
     this.caucusTopic = input;
-    return input;
   }
 
   currentList(input: string): string {

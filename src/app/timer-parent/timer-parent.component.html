@@ -2,12 +2,28 @@
 <button mat-raised-button (click)="openEmojiDialog()">
   Make a selection
 </button>
+<br>
+<button *ngIf = "matTopic" (click) = "passMotion(matTopic)">
+  Start Moderated Caucus on {{matTopic}}
+</button>
 
 <h3>Speaker Timers</h3>
 <div class = "seconds">
   <label>Total Speaking Time:
-    <br>Minutes: <input type = "number" id = "minutes" value = "0"/>
-    <br>Seconds: <input type = "number" id = "seconds" value = "5"/>
+    <br><input
+      type = "number"
+      id = "minutes"
+      placeholder="Min"
+      min = "0"
+      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+    />:<input
+      type = "number"
+      id = "seconds"
+      placeholder="Sec"
+      min = "1"
+      max = "59"
+      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+    />
   </label>
   <br>
   <button (click) = "submitTime(getTime())">Submit Time</button>
@@ -17,8 +33,20 @@
   <h2>Caucus Time Remaining: {{seconds()}}</h2>
   <br>
   <label>Speaker Time:
-    <br>Minutes:<input type = "number" id = "speakerMinutes" value = "0"/>
-    <br>Seconds:<input type = "number" id = "speakerSeconds" value = "5"/>
+    <br><input
+      type = "number"
+      id = "speakerMinutes"
+      placeholder="Min"
+      min = "0"
+      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+    />:<input
+      type = "number"
+      id = "speakerSeconds"
+      placeholder="Sec"
+      min = "1"
+      max = "59"
+      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+    />
   </label>
   <br>
   <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>

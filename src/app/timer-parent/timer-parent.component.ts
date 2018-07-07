@@ -7,6 +7,7 @@ import {DialogPosition, MatDialogConfig, MatTabsModule} from '@angular/material'
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MotionsComponent} from '../motions/motions.component';
+import {CaucusComponent} from '../caucus/caucus.component';
 
 //// View Child version
 @Component({
@@ -19,16 +20,11 @@ export class TimerParentComponent implements AfterViewInit {
   @Input() type: string;
   @ViewChild(TimerComponent)
   private timerComponent: TimerComponent;
-
-  dialogPosition: DialogPosition = {
-    bottom : '100px',
-    left : '25%',
-    right: '25%',
-    top: '-300px'
-  };
+  matTopic: string;
 
   constructor(
     public dialog: MatDialog,
+    private caucusComponent: CaucusComponent,
   ) {}
 
   speakerSeconds() {return 0;}
@@ -54,7 +50,6 @@ export class TimerParentComponent implements AfterViewInit {
    const secondsRecorded = (<HTMLInputElement>document.getElementById('seconds')).value;
    return parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
   } // TODO: Conditional Timer
-    // TODO: Do not auto start the timer
     // TODO: Limits on time
 
   getSpeakerTime(): number {
@@ -80,7 +75,12 @@ export class TimerParentComponent implements AfterViewInit {
     });
 
     dialog.afterClosed()
-      .subscribe();
+      .subscribe(passedMotion => this.matTopic = passedMotion);
+
+  }
+
+  passMotion(motion: string): void {
+    this.caucusComponent.submitCaucusTopic(motion);
   }
 
 /*  openOrdinaryText(): void {

@@ -39,6 +39,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   startSpeaker() {
+    this.start();
     this.speakerCountDown();
   }
 
@@ -48,9 +49,9 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   skipSpeaker() {
     this.caucusComponent.logTimer(this.varSpeaker);
-    if (this.type = 'Speaker List') {
+    if (this.type === 'Speaker List') {
       this.caucusComponent.removeSpeakerTop();
-    } else if (this.type = 'Moderated Caucus') {
+    } else if (this.type === 'Moderated Caucus') {
       this.caucusComponent.removeCaucusTop();
     }
       // TODO: Log the speaker LIVE, ALSO NOT SURE HOW TO INTERACT WITH MOD CAUC

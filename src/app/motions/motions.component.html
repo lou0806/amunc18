@@ -4,19 +4,39 @@
       <select id = "typeOfCaucus">
         <option value="Moderated Caucus">Moderated Caucus</option>
         <option value="Unmoderated Caucus">Unmoderated Caucus</option>
-      </select>
-      <input type = "number" placeholder="Minutes" id = "minutes">
-      <input type = "number" placeholder="Seconds" id = "seconds">
-      <input type = "text" placeholder="Topic" [disabled]="UnModOption" id = "topic">
+      </select> for
+      <input type = "number"
+             placeholder="Min"
+             id = "minutesCau"
+             onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"/>
+      :<input type = "number"
+              placeholder="Sec"
+              id = "secondsCau"
+              onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"/>
+      discussing:
+      <input type = "text" placeholder="Topic" [disabled]="UnModOption" id = "topic23">
       <button (click)="addMotion()">Add Motion</button>
       <li *ngFor="let motion of motionsList">
-        {{motion.name}}
+        Proposing a {{motion.type}}, of time {{motion.minutes}}:{{motion.seconds}} {{motion.name}}
+        <button (click)="passMotion(motion)">
+          Passed!
+        </button>
+        <button (click)="rejectMotion()">
+          Failed!
+        </button>
       </li>
     </mat-tab>
     <mat-tab label = "Text Editor">
         <textarea
-          rows = "8"
-          cols= "60"></textarea>
+          rows = "24"
+          cols= "120"
+          id = "text42"
+        ></textarea>
     </mat-tab>
   </mat-tab-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()" (click)="confirmSelection()">
+    Confirm Passed Motion {{passedMotion}}
+  </button>
 </div>
