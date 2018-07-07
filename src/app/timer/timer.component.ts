@@ -9,6 +9,7 @@ import { LogService } from '../log.service';
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
+  @Input() type: string;
   @Input() speakerSeconds: number;
   @Input() seconds: number;
 
@@ -47,7 +48,12 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   skipSpeaker() {
     this.caucusComponent.logTimer(this.varSpeaker);
-    this.caucusComponent.removeSpeakerTop(); // TODO: Log the speaker LIVE
+    if (this.type = 'Speaker List') {
+      this.caucusComponent.removeSpeakerTop();
+    } else if (this.type = 'Moderated Caucus') {
+      this.caucusComponent.removeCaucusTop();
+    }
+      // TODO: Log the speaker LIVE, ALSO NOT SURE HOW TO INTERACT WITH MOD CAUC
     this.speakerSeconds = this.varSpeaker;
   }
 
@@ -59,7 +65,11 @@ export class TimerComponent implements OnInit, OnDestroy {
       if (this.speakerSeconds === 0) {
         this.message = 'Time up';
         this.caucusComponent.logTimer(this.varSpeaker);
-        this.caucusComponent.removeSpeakerTop();
+        if (this.type = 'Speaker List') {
+          this.caucusComponent.removeSpeakerTop();
+        } else if (this.type = 'Moderated Caucus') {
+          this.caucusComponent.removeCaucusTop();
+        }
       } else if (this.speakerSeconds < 0) {
         this.message = ''; // TODO: show who is speaking now
         this.speakerSeconds = this.varSpeaker; // TODO: doesnt reset properly to original speakerSeconds

@@ -1,5 +1,12 @@
-<h3>Speaker Timers</h3>
+<h3>Motions on the Floor</h3>
 
+<h1>Your Emoji</h1>
+<div *ngIf="selectedEmoji">{{ selectedEmoji }}</div>
+<button mat-raised-button (click)="openEmojiDialog()">
+  Make a selection
+</button>
+
+<h3>Speaker Timers</h3>
 <div class = "seconds">
   <label>Total Speaking Time:
     Minutes:<input type = "number" id = "minutes" value = "0"/>
@@ -25,6 +32,7 @@
   <app-timer
     [seconds]="submitTime(getTime())"
     [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"
+    [type]="type"
   ></app-timer>
 </div>
 

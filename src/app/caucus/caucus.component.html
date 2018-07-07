@@ -25,7 +25,18 @@
               <a>
                 {{member}}
               </a>
-              <button class = "addSpeaker" title = "Add to Speakers' List" (click)="addSpeaker(member)">+</button>
+              <button
+                class = "addSpeaker"
+                title = "Add to Speakers' List"
+                (click)="addSpeaker(member)"
+                [disabled] = "isModStart(caucusTopic)"
+              >+</button>
+              <button
+                class = "addModCaucus"
+                title = "Add to Moderated Caucus"
+                (click)="addModCau(member)"
+                [disabled] = "!isModStart(caucusTopic)"
+              >+</button>
             </li>
           </ul>
       </mat-tab>
@@ -40,16 +51,47 @@
           </app-votetaker>
         </mat-tab>
         <mat-tab label="Speakers">
-          <li *ngFor="let member of speakersList">
-            <a>{{member}}</a>
-            <button class = "removeSpeaker" title = "Remove from Speakers' List" (click)="removeSpeaker(speaker)">x</button>
-          </li>
+          <div *ngIf="isListContained(speakersList); else elseBlock1">
+            <li *ngFor="let member of speakersList">
+              <a>{{member}}</a>
+              <button class = "removeSpeaker" title = "Remove from Speakers' List" (click)="removeSpeaker(member)">x</button>
+            </li>
+          </div>
+          <ng-template #elseBlock1>
+            <h3>Speakers' List is Empty. Add some speakers!</h3>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Moderated Caucus">
+          <div *ngIf="isModStart(caucusTopic); else modNoStart">
+            <p>Moderated Caucus on {{caucusTopic}}</p>
+            <button
+              (click)="endModeratedCaucus()">
+              End Moderated Caucus on {{caucusTopic}}
+            </button>
+            <li *ngFor="let member of modList">
+              <a>{{member}}</a>
+              <button
+                class = "removeModSpeaker"
+                title = "Remove from Moderated Caucus"
+                (click)="removeModSpeaker(member)">x</button>
+            </li> <!-- TODO: ACTIVATE MODERATED CAUCUS FUNCTION-->
+          </div>
+          <ng-template #modNoStart>
+            <p>You haven't started a Moderated Caucus.</p>
+            <input id = "moderatedCaucusTopic">
+            <button (click)="submitCaucusTopic(callModCaucus())">
+              Call a Moderated Caucus
+            </button>
+            {{caucusTopic}}
+          </ng-template>
         </mat-tab>
       </mat-tab-group>
     </div>
 
     <div class = "column">
-      <app-timer-parent-vc>
+      {{caucusTopic}}
+      <app-timer-parent-vc
+        [type]="currentList(caucusTopic)">
       </app-timer-parent-vc>
     </div>
   </div>

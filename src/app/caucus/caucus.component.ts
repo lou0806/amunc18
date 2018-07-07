@@ -30,6 +30,8 @@ export class CaucusComponent implements OnInit {
   members: Member[];
   speakersList: string[] = [];
   membersList: string[] = [];
+  modList: string[] = [];
+  caucusTopic = '';
 
   // TODO: Make unique committee logs
   // TODO: parent child- relationship between this and committees?
@@ -57,6 +59,14 @@ export class CaucusComponent implements OnInit {
     this.speakersList.push(member);
   }
 
+  addModCau(member: string) {
+    this.modList.push(member);
+  }
+
+  removeModSpeaker(member: string) {
+    this.modList.splice(this.modList.lastIndexOf((member)), 1);
+  }
+
   addedAlready(member: Member): boolean {
     if (Object.values(this.membersList).includes(member.name)) {
       return true;
@@ -70,10 +80,53 @@ export class CaucusComponent implements OnInit {
     this.speakersList.shift();
   } /* FIXME: For auto update*/
 
+  removeCaucusTop() {
+    this.modList.shift(); // TODO: Logging
+  }
+
   removeSpeaker(speaker: string) {
-    this.speakersList.splice(this.speakersList.lastIndexOf(speaker), 1); // TODO: FIX THE DUPLICATE PROBLEM
+    this.speakersList.splice(this.speakersList.lastIndexOf(speaker), 1);
+    // TODO: FIX THE DUPLICATE PROBLEM
   } // FIXME: INPUT WITH TIME FOR LOGGING REASONS, doesn't seem to need it??
 
+  endModeratedCaucus(): void {
+    this.caucusTopic = '';
+    this.modList = [];
+  }
+
+  isListContained(list: string[]): boolean {
+    if (list.length !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isModStart(input: string): boolean {
+    if (input.length !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  callModCaucus(): string {
+    const caucusTopic = (<HTMLInputElement>document.getElementById('moderatedCaucusTopic')).value;
+    return caucusTopic;
+  }
+
+  submitCaucusTopic(input: string): string {
+    this.caucusTopic = input;
+    return input;
+  }
+
+  currentList(input: string): string {
+    if (input.length !== 0) {
+      return 'Moderated Caucus';
+    } else {
+      return 'Speaker List';
+    }
+  }
 
   public logSpeaker(message: string) {
     this.logService.updateSpeakersLog('Log Speaker: ' + message); /*TODO: test if works*/

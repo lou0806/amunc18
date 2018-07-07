@@ -1,8 +1,12 @@
 import {AfterViewInit, EventEmitter, ViewChild} from '@angular/core';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
 import { Input, Output } from '@angular/core';
 import { LogService } from '../log.service';
+import {MatDialogConfig, MatTabsModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MotionsComponent } from '../motions/motions.component';
 
 //// View Child version
 @Component({
@@ -12,8 +16,14 @@ import { LogService } from '../log.service';
 
 export class TimerParentComponent implements AfterViewInit {
 
+  selectedEmoji: string;
+  @Input() type: string;
   @ViewChild(TimerComponent)
   private timerComponent: TimerComponent;
+
+  constructor(
+    public dialog: MatDialog,
+  ) {}
 
   speakerSeconds() {return 0;}
   seconds() { return 0; }
@@ -53,4 +63,35 @@ export class TimerParentComponent implements AfterViewInit {
   submitTime(time: number): number {
     return time;
   }
+
+  openEmojiDialog() {
+    const dialog = this.dialog.open(MotionsComponent);
+
+    dialog.afterClosed()
+      .subscribe(selection => {
+        if (selection) {
+          this.selectedEmoji = selection;
+        } else {
+
+        }
+      });
+  }
+
+/*  openOrdinaryText(): void {
+    const dialogRef = this.dialog.open(`This work??`, {
+      width: '250px',
+    });
+    /*dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: ${result');
+    });
+  }
+
+  openCoolForm(): void {
+    const dialogRef = this.dialog.open(DialogContentOrdinary, {
+      width: '250px',
+    });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('Dialog result: ${result');
+        });*/
+
 }

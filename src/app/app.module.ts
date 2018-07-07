@@ -4,6 +4,7 @@ import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatTabsModule} from '@angular/material';
 import { AppRoutingModule} from './app-routing.module';
+import { MatDialogModule} from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -22,6 +23,7 @@ import { VoterComponent } from './voter/voter.component';
 import { VotetakerComponent } from './votetaker/votetaker.component';
 import { CommitteesComponent } from './committees/committees.component';
 import { CommitteesFrontComponent } from './committees-front/committees-front.component';
+import { MotionsComponent } from './motions/motions.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { CommitteesFrontComponent } from './committees-front/committees-front.co
     VotetakerComponent,
     CommitteesComponent,
     CommitteesFrontComponent,
+    MotionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { CommitteesFrontComponent } from './committees-front/committees-front.co
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDialogModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, /* The forRoot() configuration method takes an
                                                          InMemoryDataService class that primes the in-memory database.*/
@@ -53,6 +57,7 @@ import { CommitteesFrontComponent } from './committees-front/committees-front.co
   ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MotionsComponent]
 })
 export class AppModule { }
