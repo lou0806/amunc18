@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'The Asia Pacific Model United Nations Conference 2018';
+
 }

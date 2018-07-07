@@ -3,10 +3,10 @@ import { Component, Inject } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
 import { Input, Output } from '@angular/core';
 import { LogService } from '../log.service';
-import {MatDialogConfig, MatTabsModule} from '@angular/material';
+import {DialogPosition, MatDialogConfig, MatTabsModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { MotionsComponent } from '../motions/motions.component';
+import {MotionsComponent} from '../motions/motions.component';
 
 //// View Child version
 @Component({
@@ -16,10 +16,16 @@ import { MotionsComponent } from '../motions/motions.component';
 
 export class TimerParentComponent implements AfterViewInit {
 
-  selectedEmoji: string;
   @Input() type: string;
   @ViewChild(TimerComponent)
   private timerComponent: TimerComponent;
+
+  dialogPosition: DialogPosition = {
+    bottom : '100px',
+    left : '25%',
+    right: '25%',
+    top: '-300px'
+  };
 
   constructor(
     public dialog: MatDialog,
@@ -49,6 +55,7 @@ export class TimerParentComponent implements AfterViewInit {
    return parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
   } // TODO: Conditional Timer
     // TODO: Do not auto start the timer
+    // TODO: Limits on time
 
   getSpeakerTime(): number {
     const minutesInput = (<HTMLInputElement>document.getElementById('speakerMinutes')).value;
@@ -65,16 +72,15 @@ export class TimerParentComponent implements AfterViewInit {
   }
 
   openEmojiDialog() {
-    const dialog = this.dialog.open(MotionsComponent);
+    const dialog = this.dialog.open(MotionsComponent, {
+      width: '1000px',
+      height: '500px',
+      hasBackdrop: true,
+      autoFocus: true,
+    });
 
     dialog.afterClosed()
-      .subscribe(selection => {
-        if (selection) {
-          this.selectedEmoji = selection;
-        } else {
-
-        }
-      });
+      .subscribe();
   }
 
 /*  openOrdinaryText(): void {

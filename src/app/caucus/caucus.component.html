@@ -1,5 +1,6 @@
+<div id = "forText">
   <div class = "row">
-    <div class = "column">
+    <div class = "column" id = "col1">
       <mat-tab-group>
       <mat-tab label="States">
           <h2>States Database</h2>
@@ -43,7 +44,7 @@
     </mat-tab-group>
   </div>
 
-    <div class = "column">
+    <div class = "column" id = "col2">
       <mat-tab-group>
         <mat-tab label="Voting">
           <app-votetaker
@@ -88,10 +89,12 @@
       </mat-tab-group>
     </div>
 
-    <div class = "column">
+
+    <div class = "column" id="col3">
       {{caucusTopic}}
       <app-timer-parent-vc
         [type]="currentList(caucusTopic)">
       </app-timer-parent-vc>
     </div>
   </div>
+</div>

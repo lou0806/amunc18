@@ -1,7 +1,4 @@
 <h3>Motions on the Floor</h3>
-
-<h1>Placeholder</h1>
-<div *ngIf="selectedEmoji">{{ selectedEmoji }}</div>
 <button mat-raised-button (click)="openEmojiDialog()">
   Make a selection
 </button>
@@ -9,25 +6,28 @@
 <h3>Speaker Timers</h3>
 <div class = "seconds">
   <label>Total Speaking Time:
-    Minutes:<input type = "number" id = "minutes" value = "0"/>
-    Seconds:<input type = "number" id = "seconds" value = "5"/>
+    <br>Minutes: <input type = "number" id = "minutes" value = "0"/>
+    <br>Seconds: <input type = "number" id = "seconds" value = "5"/>
   </label>
+  <br>
   <button (click) = "submitTime(getTime())">Submit Time</button>
   <br>
-  {{seconds()}}
   <button (click)="start()">Start</button>
   <button (click)="stop()">Stop</button>
+  <h2>Caucus Time Remaining: {{seconds()}}</h2>
   <br>
   <label>Speaker Time:
-    Minutes:<input type = "number" id = "speakerMinutes" value = "0"/>
-    Seconds:<input type = "number" id = "speakerSeconds" value = "5"/>
+    <br>Minutes:<input type = "number" id = "speakerMinutes" value = "0"/>
+    <br>Seconds:<input type = "number" id = "speakerSeconds" value = "5"/>
   </label>
+  <br>
   <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
   <br>
-  {{speakerSeconds()}}
   <button (click)="startSpeaker()">Start Speaker</button>
   <button (click)="stopSpeaker()">Pause Speaker</button>
   <button (click)="skipSpeaker()">Skip Speaker</button>
+  <br>
+  <h2>Speaking Time Remaining: {{speakerSeconds()}}</h2>
 
   <app-timer
     [seconds]="submitTime(getTime())"

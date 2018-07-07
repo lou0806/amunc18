@@ -1,14 +1,22 @@
-<h1 mat-dialog-title>Choose Your Destiny:</h1>
-
-<div mat-dialog-content>
-  <textarea></textarea>
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="confirmSelection()" color="primary">
-    Okays!
-  </button>
-  <button mat-button (click)="dialogRef.close()">
-    Cancel
-  </button>
+<div mat-dialog-content id = "content1">
+  <mat-tab-group>
+    <mat-tab label = "Caucus Modifier" id = "stuff1">
+      <select id = "typeOfCaucus">
+        <option value="Moderated Caucus">Moderated Caucus</option>
+        <option value="Unmoderated Caucus">Unmoderated Caucus</option>
+      </select>
+      <input type = "number" placeholder="Minutes" id = "minutes">
+      <input type = "number" placeholder="Seconds" id = "seconds">
+      <input type = "text" placeholder="Topic" [disabled]="UnModOption" id = "topic">
+      <button (click)="addMotion()">Add Motion</button>
+      <li *ngFor="let motion of motionsList">
+        {{motion.name}}
+      </li>
+    </mat-tab>
+    <mat-tab label = "Text Editor">
+        <textarea
+          rows = "8"
+          cols= "60"></textarea>
+    </mat-tab>
+  </mat-tab-group>
 </div>

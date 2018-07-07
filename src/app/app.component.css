@@ -1,4 +1,6 @@
 /* AppComponent's private CSS styles */
+
+
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -28,6 +30,9 @@ nav a.active {
   color: #039be5;
 }
 
+.cdk-overlay-container{
+  z-index: 9999999000000000;
+}
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

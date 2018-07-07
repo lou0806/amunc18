@@ -14,7 +14,10 @@ import {LogService} from '../log.service';
 import { MemberSearchComponent} from '../member-search/member-search.component';
 
 import {HttpHeaders, HttpClient} from '@angular/common/http';
-import {MatTabsModule} from '@angular/material';
+import {DialogPosition, MatDialogConfig, MatTabsModule} from '@angular/material';
+import { MotionsComponent } from '../motions/motions.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 
 @Component({
   selector: 'app-caucus',
@@ -40,6 +43,7 @@ export class CaucusComponent implements OnInit {
     private memberService: MemberService,
     private caucusService: CaucusService,
     private logService: LogService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
