@@ -1,5 +1,6 @@
 /* Master Styles */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 h1 {
   color: #369;
@@ -64,7 +65,46 @@ nav a.active {
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+}/*
+.fade.in {
+  opacity: 1;
 }
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-backdrop .fade .in {
+  opacity: 0.5 !important;
+}
+.modal {
+  text-align: center;
+  padding: 0!important;
+  display: block;
+  height: 0;
+  overflow: visible
+}
+
+.modal::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+.modal-backdrop.fade {
+  opacity: 0.5 !important;
+}
+
 /*
 .cdk-overlay-container, .cdk-global-overlay-wrapper, .cdk-overlay-pane, .mat-dialog-container, .mat-dialog-title,
 .mat-dialog-content {

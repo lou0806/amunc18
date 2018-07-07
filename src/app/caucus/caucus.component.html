@@ -7,9 +7,7 @@
           <app-member-search></app-member-search>
           <ul class="members"  style="overflow:scroll;   height:400px;">
             <li *ngFor="let member of members">
-              <a>
-                {{member.name}}
-              </a>
+              <span class="badge">{{member.name}}</span>
               <button class = "addMember"
                 title = "Add to Members' List"
                 (click)="addMember(member)"
@@ -23,9 +21,7 @@
           <h2>Member States</h2>
           <ul class="members">
             <li *ngFor="let member of membersList">
-              <a>
-                {{member}}
-              </a>
+              <span class="badge">{{member}}</span>
               <button
                 class = "addSpeaker"
                 title = "Add to Speakers' List"

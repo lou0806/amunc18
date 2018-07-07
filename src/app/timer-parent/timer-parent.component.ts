@@ -8,6 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MotionsComponent} from '../motions/motions.component';
 import {CaucusComponent} from '../caucus/caucus.component';
+import { NgbdModalComponent } from '../modal-component/modal-component.component';
 
 //// View Child version
 @Component({
@@ -99,5 +100,24 @@ export class TimerParentComponent implements AfterViewInit {
         dialogRef.afterClosed().subscribe(result => {
           console.log('Dialog result: ${result');
         });*/
+/* Get the modal
+  const modal = document.getElementById('myModal');
 
+// Get the button that opens the modal
+  const btn = document.getElementById('myBtn');
+
+// Get the <span> element that closes the modal
+  const span = document.getElementsByClassName('close')[0];
+/*
+// When the user clicks on the button, open the modal
+  btn.onclick () {
+    modal.style.display = 'block';
+  }
+
+// When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }*/
 }

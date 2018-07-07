@@ -2,4 +2,4 @@
   <button (click)="vote('1')"  [disabled]="didVote" id = "voteYes">For</button>
   <button (click)="vote('0')" [disabled]="didVote" id = "voteNo">Against</button>
   <button (click)="vote('-1')" [disabled] = "didVote" id = "voteEhh">Abstain</button>
-  <button (click)="resetButton()" [disabled]="!didVote">Reset this</button>
+  <button (click)="resetButton()">Reset this</button>

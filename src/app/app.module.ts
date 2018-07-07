@@ -5,6 +5,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatTabsModule} from '@angular/material';
 import { AppRoutingModule} from './app-routing.module';
 import { MatDialogModule} from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -23,6 +24,7 @@ import { VoterComponent } from './voter/voter.component';
 import { VotetakerComponent } from './votetaker/votetaker.component';
 import { CommitteesComponent } from './committees/committees.component';
 import { CommitteesFrontComponent } from './committees-front/committees-front.component';
+import { NgbdModalComponent, NgbdModalContent } from './modal-component/modal-component.component';
 import { MotionsComponent } from './motions/motions.component';
 
 @NgModule({
@@ -41,6 +43,8 @@ import { MotionsComponent } from './motions/motions.component';
     CommitteesComponent,
     CommitteesFrontComponent,
     MotionsComponent,
+    NgbdModalComponent,
+    NgbdModalContent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,7 @@ import { MotionsComponent } from './motions/motions.component';
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    NgbModule.forRoot(),
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, /* The forRoot() configuration method takes an
                                                          InMemoryDataService class that primes the in-memory database.*/
@@ -58,6 +63,9 @@ import { MotionsComponent } from './motions/motions.component';
   providers: [
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MotionsComponent]
+  entryComponents: [
+    MotionsComponent,
+    NgbdModalContent,
+  ]
 })
 export class AppModule { }
