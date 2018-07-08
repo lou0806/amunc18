@@ -16,7 +16,7 @@ export class VoterComponent {
 
   vote(result: string) {
     this.voted.emit(result);
-    /*this.didVote = true;*/
+    this.didVote = true;
     /*  this.voterService.resetButton$(this.didVote);*/
   }
 

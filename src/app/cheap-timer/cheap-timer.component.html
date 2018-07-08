@@ -1,6 +1,50 @@
 <mat-dialog-content>
-  <button (click)="timer.start()">Start Test Timer</button>
-  <button (click)="timer.stop()">Stop Test Timer</button>
-  <div class="seconds">{{timer.seconds}}</div>
-  <app-cheap-timer-child #timer></app-cheap-timer-child>
+
+<mat-tab-group>
+  <mat-tab label="Default View">
+    <div class = "row">
+      <div class= "col" align="center">
+        <label>Total Speaking Time:
+        <br>
+        <input type = "number" id = "minutes" value = 00 min = "0"
+          onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+        />:<input type = "number" id = "seconds" value = 00 min = "1" max = "59"
+          onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+        />
+        </label>
+        <br>
+        <button (click) = "submitTime(getTime())">Submit Time</button>
+        <br>
+        <button (click)="caucusTime.start()">Start</button>
+        <button (click)="caucusTime.stop()">Stop</button>
+        <div class="seconds">{{convertSeconds(caucusTime.seconds)}}</div>
+        <app-cheap-timer-child #caucusTime [seconds]="caucusTimeInt"></app-cheap-timer-child>
+      </div>
+      <div class="col" align="center">
+        <label>
+          Speaker Time:
+          <br>
+          <input type = "number" id = "speakerMinutes" value = 00 min = "0"
+            onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+          />:<input
+            type = "number" id = "speakerSeconds" value = 00 min = "1" max = "59"
+            onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+          />
+        </label>
+        <br>
+        <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
+        <br>
+        <button (click)="speakerTime.start()">Start</button>
+        <button (click)="speakerTime.stop()">Stop</button>
+        <button (click)="skipSpeaker()">Skip Speaker</button> <!-- TODO: FIX -->
+        <div class="seconds">{{convertSeconds(speakerTime.seconds)}}</div>
+        <app-cheap-timer-child #speakerTime [seconds]="speakerTimeInt"></app-cheap-timer-child>
+        <br>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Alternative View">
+
+  </mat-tab>
+</mat-tab-group>
 </mat-dialog-content>

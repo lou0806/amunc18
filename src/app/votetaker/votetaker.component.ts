@@ -7,6 +7,7 @@ import { LogService } from '../log.service';
 @Component({
   selector: 'app-votetaker',
   templateUrl: './votetaker.component.html',
+  styleUrls: ['./votetaker.component.css']
 })
 export class VotetakerComponent {
   agreed = 0;
@@ -46,8 +47,12 @@ export class VotetakerComponent {
   } // TODO: Log Result
 
   showSubject(input: string): void {
-    this.caucusComponent.logMotion(input);
-    document.getElementById('SubjectOfVote').innerHTML = 'Voting On:' + input;
+    if (input.length !== 0) {
+      this.caucusComponent.logMotion(input);
+      document.getElementById('SubjectOfVote').innerHTML = 'Voting On:' + input;
+    } else {
+      document.getElementById('SubjectOfVote').innerHTML = 'You haven\'t input a motion!';
+    }
   }
 
   resetVote() {

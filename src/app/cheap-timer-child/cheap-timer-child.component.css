@@ -1,0 +1,10 @@
+.col {
+  float: top;
+  width: 10px !important;
+  padding: 10px;
+  height:400px;
+}
+
+.row {
+  width: 10px;
+}

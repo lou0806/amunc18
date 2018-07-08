@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cheap-timer-child',
@@ -7,16 +7,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class CheapTimerChildComponent implements OnInit, OnDestroy {
 
+  @Input() seconds: number;
   intervalId = 0;
   message = '';
-  seconds = 11;
 
   clearTimer() {
     clearInterval(this.intervalId);
   }
 
   ngOnInit() {
-    this.start();
+    /*this.start();*/
   }
 
   ngOnDestroy() {
@@ -37,7 +37,7 @@ export class CheapTimerChildComponent implements OnInit, OnDestroy {
     this.intervalId = window.setInterval(() => {
       this.seconds -= 1;
       if (this.seconds === 0) {
-        this.message = 'Blast off!';
+        this.message = 'TIME UP';
       } else {
         if (this.seconds < 0) {
           this.seconds = 10;

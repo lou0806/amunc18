@@ -14,59 +14,58 @@
 </button>
 
 
-<h3>Speaker Timers</h3>
 <div class = "seconds">
-  <label>Total Speaking Time:
-    <br><input
-      type = "number"
-      id = "minutes"
-      placeholder="Min"
-      min = "0"
-      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
-    />:<input
-      type = "number"
-      id = "seconds"
-      placeholder="Sec"
-      min = "1"
-      max = "59"
-      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
-    />
-  </label>
-  <br>
-  <button (click) = "submitTime(getTime())">Submit Time</button>
-  <br>
-  <button (click)="start()">Start</button>
-  <button (click)="stop()">Stop</button>
-  <h2>Caucus Time Remaining: {{seconds()}}</h2>
-  <br>
-  <label>Speaker Time:
-    <br><input
-      type = "number"
-      id = "speakerMinutes"
-      placeholder="Min"
-      min = "0"
-      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
-    />:<input
-      type = "number"
-      id = "speakerSeconds"
-      placeholder="Sec"
-      min = "1"
-      max = "59"
-      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
-    />
-  </label>
-  <br>
-  <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
-  <br>
-  <button (click)="startSpeaker()">Start Speaker</button>
-  <button (click)="stopSpeaker()">Pause Speaker</button>
-  <button (click)="skipSpeaker()">Skip Speaker</button>
-  <br>
-  <h2>Speaking Time Remaining: {{speakerSeconds()}}</h2>
+  <!-- <label>Total Speaking Time:
+     <br><input
+       type = "number"
+       id = "minutes"
+       placeholder="Min"
+       min = "0"
+       onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+     />:<input
+       type = "number"
+       id = "seconds"
+       placeholder="Sec"
+       min = "1"
+       max = "59"
+       onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+     />
+   </label>
+   <br>
+   <!--  <button (click) = "submitTime(getTime())">Submit Time</button>
+     <br>
+     <button (click)="start()">Start</button>
+     <button (click)="stop()">Stop</button>
+     <h2>Caucus Time Remaining: {{seconds()}}</h2>
+     <br>
+     <label>Speaker Time:
+       <br><input
+         type = "number"
+         id = "speakerMinutes"
+         placeholder="Min"
+         min = "0"
+         onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+       />:<input
+         type = "number"
+         id = "speakerSeconds"
+         placeholder="Sec"
+         min = "1"
+         max = "59"
+         onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+       />
+     </label>
+     <br>
+     <!--  <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
+       <br>
+       <button (click)="startSpeaker()">Start Speaker</button>
+       <button (click)="stopSpeaker()">Pause Speaker</button>
+       <button (click)="skipSpeaker()">Skip Speaker</button>
+       <br>
+       <h2>Speaking Time Remaining: {{speakerSeconds()}}</h2>
 
-  <app-timer
-    [seconds]="submitTime(getTime())"
-    [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"
-    [type]="type"
-  ></app-timer>
+       <app-timer
+         [seconds]="submitTime(getTime())"
+         [speakerSeconds]="submitSpeakerTime(getSpeakerTime())"
+         [type]="type"
+       ></app-timer>-->
 </div>

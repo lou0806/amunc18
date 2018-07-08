@@ -86,7 +86,7 @@ export class TimerParentComponent implements AfterViewInit {
 
   openBigTimer() {
     const dialog = this.dialog.open(CheapTimerComponent, {
-      width: '1000px',
+      width: '2000px',
       height: '500px',
       hasBackdrop: true,
       autoFocus: true,

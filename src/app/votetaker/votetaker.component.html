@@ -1,14 +1,32 @@
-<h2><input type="text" #subjectInput placeholder="Input Motion Here"/></h2> <!-- TODO: FIX --->
+<h3><input type="text" #subjectInput placeholder="Input Motion Here" id = "motionProp"/></h3> <!-- TODO: FIX --->
 
-<button
-  (click) = "showSubject(subjectInput.value)"
->Confirm Motion</button>
-<h2 id = "SubjectOfVote"> </h2>
+<button (click) = "showSubject(subjectInput.value)" >
+  Confirm Motion</button>
+<p id = "SubjectOfVote">
+</p>
 
-<button>Start Vote</button> <!-- TODO: Make flashier, START VOTE ON...-->
+<div *ngIf="subjectInput.value">
+  <h4>For: {{agreed}}, Against: {{disagreed}}, Abstain: {{abstained}}</h4>
+  <button (click) = "activateVoter()">Start Vote</button> <!-- TODO: Make flashier, START VOTE ON...-->
+  <button (click)="resetVote()">Reset Count</button>
 
-<h3>For: {{agreed}}, Against: {{disagreed}}, Abstain: {{abstained}}</h3>
+  <mat-tab-group id = "voterTabs" #voterTabs>
+    <div *ngFor = "let voter of voters">
+      <mat-tab>
+        <app-voter [name]="voter"
+                   (voted)="onVoted($event)">
+        </app-voter>
+        <button (click) = "voterTabs.selectedIndex = voters.indexOf(voter) + 1">Next</button>
+      </mat-tab>
+    </div>
+    <mat-tab>
+      <h3 (click) = "showResult()">Click for Result</h3>
+      <h4 id = "ResultOfVote"></h4>
+    </mat-tab>
+  </mat-tab-group>
 
+
+  <!--
 <app-voter *ngFor="let voter of voters"
            [name]="voter"
            (voted)="onVoted($event)">
@@ -20,3 +38,4 @@
 <button
   (click)="resetVote()">
   Reset Vote</button> <!-- TODO: FIX -->
+</div>
