@@ -54,9 +54,6 @@ button {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
 }
 
 button:hover {
@@ -107,19 +104,12 @@ button.delete {
 
 .members .badge {
   display: inline-block;
-  font-size: small;
-  color: white;
+  font-size: medium;
+  color: #0A0D2E;
   padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
   line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
   text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+  background-color: transparent;
 }
 
 /* Create three equal columns that floats next to each other */
@@ -128,6 +118,7 @@ button.delete {
   width: 30.00%;
   padding: 10px;
   height: auto;
+  border: 4px #0A0D2E;;
 }
 
 .row:after {
@@ -141,7 +132,7 @@ button.delete {
   min-width: 25px !important;
   padding: 5px;
   background-color: transparent;
-  color: red;
+  color: #0A0D2E;
   font-weight: 700;
 }
 
@@ -150,13 +141,18 @@ button.delete {
   min-width: 25px !important;
   padding: 5px;
   background-color: transparent;
-  color: red;
+  color: #0A0D2E;
   font-weight: 700;
+}
+
+#addMemberBtn {
+  font-weight: bold;
+  left: 0;
 }
 
 /* Styles for the ink bar */
 .mat-ink-bar {
-  background-color: green;
+  background-color: purple;
 }
 
 .mat-tab-body-wrapper{
@@ -177,6 +173,25 @@ button.delete {
 .forText {
   height: 2000px;
 }
+
+#col1 {
+  color: #0A0D2E;
+  border-right: 4px #0A0D2E;
+}
+
+div{
+  column-rule: 4px #0A0D2E;
+}
+
+.seconds {
+  background-color: black !important;
+  color: white !important;
+  font-size: 3em !important;
+  margin: 0.3em 0 !important;
+  text-align: center !important;
+  width: 3em !important;
+}
+
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

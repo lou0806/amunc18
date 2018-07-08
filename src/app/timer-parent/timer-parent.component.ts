@@ -18,12 +18,19 @@ import {CheapTimerComponent} from '../cheap-timer/cheap-timer.component';
   templateUrl: './timer-parent.component.html',
 })
 
-export class TimerParentComponent implements AfterViewInit {
+export class TimerParentComponent /*implements AfterViewInit*/ {
 
   @Input() type: string;
-  @ViewChild(TimerComponent)
-  private timerComponent: TimerComponent;
+  /* @ViewChild(TimerComponent)
+   private timerComponent: TimerComponent;*/
   matTopic: string;
+
+  @Input() speakerSeconds: number;
+  @Input() caucusSeconds: number;
+  caucusTimeInt = 0;
+  speakerTimeInt = 0;
+  caucusTimeString: string;
+  speakerTimeString: string;
 
   constructor(
     public dialog: MatDialog,
@@ -31,44 +38,47 @@ export class TimerParentComponent implements AfterViewInit {
     private passSecondsService: PassSecondsService,
   ) {}
 
-  speakerSeconds() {return 0; }
-  seconds() { return 0; }
-
-  ngAfterViewInit() {
-    // Redefine `seconds()` to get from the `CountdownTimerComponent.seconds` ...
-    // but wait a tick first to avoid one-time devMode
-    // unidirectional-data-flow-violation error
-    setTimeout(() => this.speakerSeconds = () => this.timerComponent.speakerSeconds, 0);
-    setTimeout(() => this.seconds = () => this.timerComponent.seconds, 0);
-  }
-
-  start() { this.timerComponent.start(); }
-  stop() { this.timerComponent.stop(); }
-
-  startSpeaker() { this.timerComponent.startSpeaker(); }
-  stopSpeaker() {this.timerComponent.stopSpeaker(); }
-  skipSpeaker() {this.timerComponent.skipSpeaker(); }
-
   getTime(): number {
-   const minutesRecorded = (<HTMLInputElement>document.getElementById('minutes')).value;
-   const secondsRecorded = (<HTMLInputElement>document.getElementById('seconds')).value;
-   return parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
+    const minutesRecorded = (<HTMLInputElement>document.getElementById('minutes')).value;
+    const secondsRecorded = (<HTMLInputElement>document.getElementById('seconds')).value;
+    this.caucusTimeInt = parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
+    this.caucusTimeString = '' + this.caucusTimeInt;
+    return parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
   } // TODO: Conditional Timer
     // TODO: Limits on time
 
   getSpeakerTime(): number {
     const minutesInput = (<HTMLInputElement>document.getElementById('speakerMinutes')).value;
     const secondsInput = (<HTMLInputElement>document.getElementById('speakerSeconds')).value;
+    this.speakerTimeInt = parseInt(minutesInput, 0) * 60 + parseInt(secondsInput, 0)
+    this.speakerTimeString = '' + this.speakerTimeInt;
     return parseInt(minutesInput, 0) * 60 + parseInt(secondsInput, 0);
   }
 
   submitSpeakerTime(time: number): number {
-    this.passSecondsService.setSeconds(time);
     return time;
   }
 
   submitTime(time: number): number {
     return time;
+  }
+
+  convertSeconds(time: number): string {
+    const seconds = time % 60;
+    const minutes = (time - seconds) / 60;
+    let secondString = '';
+    let minuteString = '';
+    if (minutes < 10) {
+      minuteString = '0' + minutes;
+    } else {
+      minuteString = '' + minutes;
+    }
+    if (seconds < 10) {
+      secondString = '0' + seconds;
+    } else {
+      secondString = '' + seconds;
+    }
+    return minuteString + ':' + secondString;
   }
 
   openEmojiDialog() {
@@ -95,28 +105,100 @@ export class TimerParentComponent implements AfterViewInit {
     dialog.afterClosed()
       .subscribe();
   }
+}
+    /*
+      constructor(
+        public dialog: MatDialog,
+        private caucusComponent: CaucusComponent,
+        private passSecondsService: PassSecondsService,
+      ) {}
 
-  passMotion(motion: string): void {
-    this.caucusComponent.submitCaucusTopic(motion);
-  }
+      speakerSeconds() {return 0; }
+      seconds() { return 0; }
+
+      ngAfterViewInit() {
+        // Redefine `seconds()` to get from the `CountdownTimerComponent.seconds` ...
+        // but wait a tick first to avoid one-time devMode
+        // unidirectional-data-flow-violation error
+        setTimeout(() => this.speakerSeconds = () => this.timerComponent.speakerSeconds, 0);
+        setTimeout(() => this.seconds = () => this.timerComponent.seconds, 0);
+      }
+
+      start() { this.timerComponent.start(); }
+      stop() { this.timerComponent.stop(); }
+
+      startSpeaker() { this.timerComponent.startSpeaker(); }
+      stopSpeaker() {this.timerComponent.stopSpeaker(); }
+      skipSpeaker() {this.timerComponent.skipSpeaker(); }
+
+      getTime(): number {
+       const minutesRecorded = (<HTMLInputElement>document.getElementById('minutes')).value;
+       const secondsRecorded = (<HTMLInputElement>document.getElementById('seconds')).value;
+       return parseInt(minutesRecorded, 0) * 60 + parseInt(secondsRecorded, 0);
+      } // TODO: Conditional Timer
+        // TODO: Limits on time
+
+      getSpeakerTime(): number {
+        const minutesInput = (<HTMLInputElement>document.getElementById('speakerMinutes')).value;
+        const secondsInput = (<HTMLInputElement>document.getElementById('speakerSeconds')).value;
+        return parseInt(minutesInput, 0) * 60 + parseInt(secondsInput, 0);
+      }
+
+      submitSpeakerTime(time: number): number {
+        this.passSecondsService.setSeconds(time);
+        return time;
+      }
+
+      submitTime(time: number): number {
+        return time;
+      }
+
+      openEmojiDialog() {
+        const dialog = this.dialog.open(MotionsComponent, {
+          width: '1000px',
+          height: '500px',
+          hasBackdrop: true,
+          autoFocus: true,
+        });
+
+        dialog.afterClosed()
+          .subscribe(passedMotion => this.matTopic = passedMotion);
+
+      }
+
+      openBigTimer() {
+        const dialog = this.dialog.open(CheapTimerComponent, {
+          width: '2000px',
+          height: '500px',
+          hasBackdrop: true,
+          autoFocus: true,
+        });
+
+        dialog.afterClosed()
+          .subscribe();
+      }
+
+      passMotion(motion: string): void {
+        this.caucusComponent.submitCaucusTopic(motion);
+      }
 
 
-/*  openOrdinaryText(): void {
-    const dialogRef = this.dialog.open(`This work??`, {
-      width: '250px',
-    });
-    /*dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result: ${result');
-    });
-  }
-
-  openCoolForm(): void {
-    const dialogRef = this.dialog.open(DialogContentOrdinary, {
-      width: '250px',
-    });
-        dialogRef.afterClosed().subscribe(result => {
+    /*  openOrdinaryText(): void {
+        const dialogRef = this.dialog.open(`This work??`, {
+          width: '250px',
+        });
+        /*dialogRef.afterClosed().subscribe(result => {
           console.log('Dialog result: ${result');
-        });*/
+        });
+      }
+
+      openCoolForm(): void {
+        const dialogRef = this.dialog.open(DialogContentOrdinary, {
+          width: '250px',
+        });
+            dialogRef.afterClosed().subscribe(result => {
+              console.log('Dialog result: ${result');
+            });*/
 /* Get the modal
   const modal = document.getElementById('myModal');
 
@@ -137,4 +219,4 @@ export class TimerParentComponent implements AfterViewInit {
       modal.style.display = 'none';
     }
   }*/
-}
+

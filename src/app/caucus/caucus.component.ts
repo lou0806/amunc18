@@ -71,6 +71,10 @@ export class CaucusComponent implements OnInit {
     this.modList.splice(this.modList.lastIndexOf((member)), 1);
   }
 
+  removeMemberState(member: string) {
+    this.membersList.splice(this.membersList.lastIndexOf(member), 1);
+  }
+
   addedAlready(member: Member): boolean {
     if (Object.values(this.membersList).includes(member.name)) {
       return true;

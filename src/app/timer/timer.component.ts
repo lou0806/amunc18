@@ -12,6 +12,47 @@ import { MAT_DIALOG_DATA } from '@angular/material'
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
+  @Input() seconds: number;
+  intervalId = 0;
+  message = '';
+
+  clearTimer() {
+    clearInterval(this.intervalId);
+  }
+
+  ngOnInit() {
+    /*this.start();*/
+  }
+
+  ngOnDestroy() {
+    this.clearTimer();
+  }
+
+  start() {
+    this.countDown();
+  }
+
+  stop() {
+    this.clearTimer();
+    this.message = `Holding at T-${this.seconds} seconds`;
+  }
+
+  private countDown() {
+    this.clearTimer();
+    this.intervalId = window.setInterval(() => {
+      this.seconds -= 1;
+      if (this.seconds === 0) {
+        this.message = 'TIME UP';
+      } else {
+        if (this.seconds < 0) {
+          this.seconds = 10;
+        } // reset
+        this.message = `T-${this.seconds} seconds and counting`;
+      }
+    }, 1000);
+  }
+}
+/*
   @Input() type: string;
   @Input() speakerSeconds: number;
   @Input() seconds: number;
@@ -31,8 +72,8 @@ export class TimerComponent implements OnInit, OnDestroy {
   clearTimer() {clearInterval(this.intervalId); }
   clearTimer2() {clearInterval(this.intervalId2); }
 
-  ngOnInit() {/*this.start(); this.startSpeaker(); */}
-  ngOnDestroy() {this.clearTimer(); this.clearTimer2(); }
+  ngOnInit() {/*this.start(); this.startSpeaker(); }
+  /*ngOnDestroy() {this.clearTimer(); this.clearTimer2(); }
 
   start() {
     this.countDown();
@@ -99,5 +140,5 @@ export class TimerComponent implements OnInit, OnDestroy {
       }
       this.passService.setSeconds(this.seconds);
     }, 1000);
-  }
-}
+  }*/
+

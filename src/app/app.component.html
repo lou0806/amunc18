@@ -1,14 +1,36 @@
 <div align="bottom"><a href="https://github.com/lou0806/amunc18">Source</a></div>
-<h1>{{title}}</h1>
+<h2>{{title}} <img src="https://static1.squarespace.com/static/59dc3dbc1f318db010fd8d0b/t/59dc68bef14aa1f2
+6de7ce35/1531060317945/?format=1500w" style="width:100px;height:100px;"></h2>
 
 <nav>
   <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/data">Data</a>
-
-  <!--A routerLink attribute is set to "/heroes", the string that the router matches to the route to HeroesComponent.
-      The routerLink is the selector for the RouterLink directive that turns user clicks into router navigations. It's
-      another of the public directives in the RouterModule.--->
+  <div class="dropdown">
+    <button class="dropbtn">List of Committees</button>
+    <div class="dropdown-content">
+      <a routerLink="/committee/0"> GA1</a>
+      <a routerLink="/committee/1"> GA2</a>
+      <a routerLink="/committee/2"> GA3</a>
+      <a routerLink="/committee/3"> GA4</a>
+      <a routerLink="/committee/4"> GA6</a>
+      <a routerLink="/committee/5"> A-P Summit</a>
+      <a routerLink="/committee/6"> ASEAN</a>
+      <a routerLink="/committee/7"> SCO</a>
+      <a routerLink="/committee/8"> UNCSW</a>
+      <a routerLink="/committee/9"> UNHCR</a>
+      <a routerLink="/committee/10"> UNSC </a>
+      <a routerLink="/committee/11"> UNDP </a>
+      <a routerLink="/committee/12"> WHO </a>
+      <a routerLink="/committee/13"> AU </a>
+      <a routerLink="/committee/14"> Katanga Crisis </a>
+      <a routerLink="/committee/15"> Syrian Crisis</a>
+    </div>
+  </div>
 </nav>
+  <!--  <a routerLink="/data">Data</a>
+
+    <!--A routerLink attribute is set to "/heroes", the string that the router matches to the route to HeroesComponent.
+        The routerLink is the selector for the RouterLink directive that turns user clicks into router navigations. It's
+        another of the public directives in the RouterModule.--->
 <router-outlet></router-outlet>
 <!-- <app-messages></app-messages> --->
 

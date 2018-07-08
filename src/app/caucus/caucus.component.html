@@ -4,24 +4,27 @@
       <mat-tab-group>
       <mat-tab label="States">
           <h2>States Database</h2>
+          <p>Add your Member States here</p>
           <app-member-search></app-member-search>
           <ul class="members"  style="overflow:scroll;   height:400px;">
             <li *ngFor="let member of members">
-              <span class="badge">{{member.name}}</span>
               <button class = "addMember"
-                title = "Add to Members' List"
-                (click)="addMember(member)"
-                [disabled] = "addedAlready(member)">
+                      title = "Add as Member State"
+                      (click)="addMember(member)"
+                      [disabled] = "addedAlready(member)"
+                      id = "addMemberBtn"
+                      matTooltip="Add as a Member State">
                 +
               </button>
+              {{member.name}}
             </li>
           </ul>
       </mat-tab>
       <mat-tab label="Members (Add Speakers from Here)">
           <h2>Member States</h2>
+          <p>Left button adds to Speakers' List, right button adds to Moderated Caucus, depending on which is active</p>
           <ul class="members">
             <li *ngFor="let member of membersList">
-              <span class="badge">{{member}}</span>
               <button
                 class = "addSpeaker"
                 title = "Add to Speakers' List"
@@ -34,6 +37,11 @@
                 (click)="addModCau(member)"
                 [disabled] = "!isModStart(caucusTopic)"
               >+</button>
+              {{member}}
+              <button
+                (click)="removeMemberState(member)">
+                x
+              </button>
             </li>
           </ul>
       </mat-tab>
@@ -58,7 +66,7 @@
             <h3>Speakers' List is Empty. Add some speakers!</h3>
           </ng-template>
         </mat-tab>
-        <mat-tab label="Moderated Caucus">
+        <mat-tab label="Caucus">
           <div *ngIf="isModStart(caucusTopic); else modNoStart">
             <p>Moderated Caucus on {{caucusTopic}}</p>
             <button
@@ -79,6 +87,9 @@
             <button (click)="submitCaucusTopic(callModCaucus())">
               Call a Moderated Caucus
             </button>
+            <button (click)="callUnmoderatedCaucus()">
+              Call an Unmoderated Caucus
+            </button>
             {{caucusTopic}}
           </ng-template>
         </mat-tab>
@@ -87,7 +98,9 @@
 
 
     <div class = "column" id="col3">
-      <h2>Status: {{caucusTopic}} </h2>
+      <h2>Topic of Discussion:
+        <br>{{caucusTopic}}
+        <br></h2>
       <app-timer-parent-vc
         [type]="currentList(caucusTopic)"> <!-- TODO: Fix this event-->
       </app-timer-parent-vc>

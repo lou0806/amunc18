@@ -4,7 +4,7 @@
   <mat-tab label="Default View">
     <div class = "row">
       <div class= "col" align="center">
-        <label>Total Speaking Time:
+        <label>Total Time:
         <br>
         <input type = "number" id = "minutes" value = 00 min = "0"
           onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
@@ -14,7 +14,6 @@
         </label>
         <br>
         <button (click) = "submitTime(getTime())">Submit Time</button>
-        <br>
         <button (click)="caucusTime.start()">Start</button>
         <button (click)="caucusTime.stop()">Stop</button>
         <div class="seconds">{{convertSeconds(caucusTime.seconds)}}</div>
@@ -43,7 +42,7 @@
       </div>
     </div>
   </mat-tab>
-  <mat-tab label="Alternative View">
+  <mat-tab label="Alternative View (Coming Soon)">
 
   </mat-tab>
 </mat-tab-group>

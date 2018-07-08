@@ -1,4 +1,4 @@
-<h3>Motions on the Floor</h3>
+<h3>Motions:</h3>
 <!--<ngbd-modal-component></ngbd-modal-component> <!-- FIXME: FORCE CHANGED THE STYLE FILE BOOTSTRAP THING FOR THIS-->
 
 <button mat-raised-button (click)="openEmojiDialog()">
@@ -8,9 +8,51 @@
 <button *ngIf = "matTopic" (click) = "passMotion(matTopic)">
   Start Moderated Caucus on {{matTopic}}
 </button>
+<h3>Timer:</h3>
+
+<div class = "row">
+  <div class= "col" align="center">
+    <label>Total Time:
+      <br>
+      <input type = "number" id = "minutes" value = 00 min = "0"
+             onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+      />:<input type = "number" id = "seconds" value = 00 min = "1" max = "59"
+                onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+      />
+    </label>
+    <br>
+    <button (click) = "submitTime(getTime())">Submit Time</button>
+    <br>
+    <button (click)="caucusTime.start()">Start</button>
+    <button (click)="caucusTime.stop()">Stop</button>
+    <div class="seconds">{{convertSeconds(caucusTime.seconds)}}</div>
+    <app-cheap-timer-child #caucusTime [seconds]="caucusTimeInt"></app-cheap-timer-child>
+  </div>
+  <div class="col" align="center">
+    <label>
+      Speaker Time:
+      <br>
+      <input type = "number" id = "speakerMinutes" value = 00 min = "0"
+             onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+      />:<input
+      type = "number" id = "speakerSeconds" value = 00 min = "1" max = "59"
+      onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;"
+    />
+    </label>
+    <br>
+    <button (click) = "submitSpeakerTime(getSpeakerTime())">Submit Time</button>
+    <br>
+    <button (click)="speakerTime.start()">Start</button>
+    <button (click)="speakerTime.stop()">Stop</button>
+    <button (click)="skipSpeaker()">Skip</button> <!-- TODO: FIX -->
+    <div class="seconds">{{convertSeconds(speakerTime.seconds)}}</div>
+    <app-cheap-timer-child #speakerTime [seconds]="speakerTimeInt"></app-cheap-timer-child>
+    <br>
+  </div>
+</div>
 
 <button mat-raised-button (click)="openBigTimer()">
-  Big Timer Button
+  Open other Timer (not working)
 </button>
 
 

@@ -1,4 +1,5 @@
-<div *ngIf="committees[checkParse()]">
+<div *ngIf="committees[checkParse()]" id = "committeeName1">
+  <br>
   <h1>{{committees[checkParse()].name}}</h1>
   <app-caucus
     [committeeName]="committees[checkParse()].name"

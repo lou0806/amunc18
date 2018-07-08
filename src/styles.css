@@ -17,15 +17,15 @@ body {
 }
 body, input[text], button {
   color: #888;
-  font-family: Cambria, Georgia;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 a {
   cursor: pointer;
   cursor: hand;
 }
 button {
-  font-family: Arial;
-  background-color: #eee;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  background-color: #F1F1F3;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
@@ -48,7 +48,7 @@ nav a {
   margin-right: 10px;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: #F1F1F3;
   border-radius: 4px;
 }
 nav a:visited, a:link {
@@ -56,14 +56,31 @@ nav a:visited, a:link {
 }
 nav a:hover {
   color: #039be5;
-  background-color: #CFD8DC;
+  background-color: #F1F1F3;
 }
 nav a.active {
   color: #039be5;
 }
 
+div {
+  background-color: #F1F1F3;
+}
+
+body {
+  padding: 0;
+  background-color: #0A0D2E;
+}
+
+head {
+  background-color: #0A0D2E;;
+  padding: 30px;
+}
+
+
 /* everywhere else */
 * {
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }/*
 .fade.in {

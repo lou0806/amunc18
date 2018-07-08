@@ -1,4 +1,10 @@
-<h3><input type="text" #subjectInput placeholder="Input Motion Here" id = "motionProp"/></h3> <!-- TODO: FIX --->
+<!-- TODO: FIX --->
+<textarea
+  #subjectInput
+  rows = "7"
+  cols = "20"
+  id = "motionProp"></textarea>
+<!--<h3><input type="text" #subjectInput placeholder="Input Motion Here" id = "motionProp"/></h3> <!-- TODO: FIX --->
 
 <button (click) = "showSubject(subjectInput.value)" >
   Confirm Motion</button>
@@ -8,7 +14,8 @@
 <div *ngIf="subjectInput.value">
   <h4>For: {{agreed}}, Against: {{disagreed}}, Abstain: {{abstained}}</h4>
   <button (click) = "activateVoter()">Start Vote</button> <!-- TODO: Make flashier, START VOTE ON...-->
-  <button (click)="resetVote()">Reset Count</button>
+
+  <button (click)="resetVote()" id = "resetbtn">Reset Count</button>
 
   <mat-tab-group id = "voterTabs" #voterTabs>
     <div *ngFor = "let voter of voters">
