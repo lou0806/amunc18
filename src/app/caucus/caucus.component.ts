@@ -131,6 +131,20 @@ export class CaucusComponent implements OnInit {
     }
   }
 
+/*
+  openBigTimer() {
+    const dialog = this.dialog.open(TimerParentComponent, {
+      width: '1000px',
+      height: '500px',
+      hasBackdrop: true,
+      autoFocus: true,
+    });
+
+    dialog.afterClosed()
+      .subscribe();
+
+  }*/
+
   public logSpeaker(message: string) {
     this.logService.updateSpeakersLog('Log Speaker: ' + message); /*TODO: test if works*/
   } /* TODO: Yielding?*/

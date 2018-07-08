@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {PassSecondsService} from '../pass-seconds.service';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -23,7 +24,9 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class NgbdModalContent {
   @Input() string;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    public activeModal: NgbActiveModal
+  ) {}
 }
 
 @Component({
@@ -31,13 +34,27 @@ export class NgbdModalContent {
   template: `
     <button
         (click)="open()"
-    >Big Timer (not working) </button>
-  `
+    >Big Timer</button>
+  {{getTime()}}`
 })
 export class NgbdModalComponent {
-  @Input() name: string;
+  /*@Input() name: string;*/
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private passService: PassSecondsService
+  ) {}
+
+  name = 'Test';
+  test: number;
+  test1: string;
+
+  getTime(): string {
+    this.passService.getSeconds()
+      .subscribe(seconds => this.test = seconds); /*Observable.subscribe() */
+    this.test1 = '' + this.test;
+    return this.test1;
+  }
 
   open() {
     const modalRef = this.modalService.open(NgbdModalContent);

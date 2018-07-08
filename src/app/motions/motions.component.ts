@@ -31,7 +31,7 @@ export class MotionsComponent {
       this.passedMotion = motion.name;
       /*this.timerComponent.passMotion(motion.name);*/
       return motion.name;
-    } else {
+    } else if (motion.type === 'Unmoderated Caucus') {
       this.passedMotion = 'Unmoderated Caucus for ' + motion.minutes + ':' + motion.seconds;
       /*this.timerComponent.passMotion('Unmoderated Caucus for ' + motion.minutes + ':' + motion.seconds);*/
       return 'Unmoderated Caucus for ' + motion.minutes + ':' + motion.seconds;

@@ -1,6 +1,9 @@
 import {Input, Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { CaucusComponent } from '../caucus/caucus.component';
 import { LogService } from '../log.service';
+import {PassSecondsService} from '../pass-seconds.service';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
   selector: 'app-timer',
@@ -18,6 +21,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   constructor (
     private caucusComponent: CaucusComponent,
     private logService: LogService,
+    private passService: PassSecondsService,
   ) {}
 
   intervalId = 0;
@@ -39,7 +43,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   startSpeaker() {
-    this.start();
+    this.countDown();
     this.speakerCountDown();
   }
 
@@ -60,6 +64,7 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   // TODO HERE: skip to next speaker when speaker timer finishes, so remove top from array of speakers
   private speakerCountDown() {
+    this.clearTimer2();
     this.varSpeaker = this.speakerSeconds;
     this.intervalId2 = window.setInterval(() => {
       this.speakerSeconds -= 1;
@@ -76,6 +81,7 @@ export class TimerComponent implements OnInit, OnDestroy {
         this.speakerSeconds = this.varSpeaker; // TODO: doesnt reset properly to original speakerSeconds
         this.clearTimer2();
       }
+      this.passService.setSeconds(this.speakerSeconds);
     }, 1000);
   }
 
@@ -91,6 +97,7 @@ export class TimerComponent implements OnInit, OnDestroy {
         this.seconds = this.varSpeaker;
         this.clearTimer();
       }
+      this.passService.setSeconds(this.seconds);
     }, 1000);
   }
 }

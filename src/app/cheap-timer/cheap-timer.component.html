@@ -1,0 +1,6 @@
+<mat-dialog-content>
+  <button (click)="timer.start()">Start Test Timer</button>
+  <button (click)="timer.stop()">Stop Test Timer</button>
+  <div class="seconds">{{timer.seconds}}</div>
+  <app-cheap-timer-child #timer></app-cheap-timer-child>
+</mat-dialog-content>

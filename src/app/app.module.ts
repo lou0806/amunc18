@@ -26,6 +26,8 @@ import { CommitteesComponent } from './committees/committees.component';
 import { CommitteesFrontComponent } from './committees-front/committees-front.component';
 import { NgbdModalComponent, NgbdModalContent } from './modal-component/modal-component.component';
 import { MotionsComponent } from './motions/motions.component';
+import { CheapTimerComponent } from './cheap-timer/cheap-timer.component';
+import { CheapTimerChildComponent } from './cheap-timer-child/cheap-timer-child.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { MotionsComponent } from './motions/motions.component';
     CommitteesFrontComponent,
     MotionsComponent,
     NgbdModalComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    CheapTimerComponent,
+    CheapTimerChildComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ import { MotionsComponent } from './motions/motions.component';
   entryComponents: [
     MotionsComponent,
     NgbdModalContent,
+    CheapTimerComponent
   ]
 })
 export class AppModule { }

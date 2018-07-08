@@ -9,6 +9,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MotionsComponent} from '../motions/motions.component';
 import {CaucusComponent} from '../caucus/caucus.component';
 import { NgbdModalComponent } from '../modal-component/modal-component.component';
+import {PassSecondsService} from '../pass-seconds.service';
+import {CheapTimerComponent} from '../cheap-timer/cheap-timer.component';
 
 //// View Child version
 @Component({
@@ -26,9 +28,10 @@ export class TimerParentComponent implements AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private caucusComponent: CaucusComponent,
+    private passSecondsService: PassSecondsService,
   ) {}
 
-  speakerSeconds() {return 0;}
+  speakerSeconds() {return 0; }
   seconds() { return 0; }
 
   ngAfterViewInit() {
@@ -60,6 +63,7 @@ export class TimerParentComponent implements AfterViewInit {
   }
 
   submitSpeakerTime(time: number): number {
+    this.passSecondsService.setSeconds(time);
     return time;
   }
 
@@ -80,9 +84,22 @@ export class TimerParentComponent implements AfterViewInit {
 
   }
 
+  openBigTimer() {
+    const dialog = this.dialog.open(CheapTimerComponent, {
+      width: '1000px',
+      height: '500px',
+      hasBackdrop: true,
+      autoFocus: true,
+    });
+
+    dialog.afterClosed()
+      .subscribe();
+  }
+
   passMotion(motion: string): void {
     this.caucusComponent.submitCaucusTopic(motion);
   }
+
 
 /*  openOrdinaryText(): void {
     const dialogRef = this.dialog.open(`This work??`, {
