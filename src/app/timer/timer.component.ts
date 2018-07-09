@@ -17,6 +17,8 @@ export class TimerComponent implements OnInit, OnDestroy {
   intervalId = 0;
   message = '';
   initialSeconds = this.seconds;
+  tickSeconds = this.seconds;
+  varSpeaker = this.seconds;
 
   constructor (
     private caucusComponent: CaucusComponent,
@@ -64,13 +66,14 @@ export class TimerComponent implements OnInit, OnDestroy {
   }*/
 
   private countDown() {
+    this.varSpeaker = this.seconds;
     this.clearTimer();
     this.intervalId = window.setInterval(() => {
-      this.seconds -= 1;
-      if (this.seconds === 0) {
+      this.tickSeconds -= 1;
+      if (this.tickSeconds === 0) {
         this.message = 'TIME UP';
-      } else if (this.seconds < 0) {
-        this.seconds = 200;
+      } else if (this.tickSeconds < 0) {
+        this.tickSeconds = this.varSpeaker;
       }
     }, 1000);
   }

@@ -6,3 +6,12 @@
   text-align: center !important;
   width: 5em !important;
 }
+
+.tickSeconds {
+  background-color: black !important;
+  color: white !important;
+  font-size: 3em !important;
+  margin: 0.3em 0 !important;
+  text-align: center !important;
+  width: 5em !important;
+}
