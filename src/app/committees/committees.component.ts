@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommitteesService} from '../committees.service';
   styleUrls: ['./committees.component.css']
 })
 
-export class CommitteesComponent implements OnInit {
+export class CommitteesComponent implements OnInit, AfterViewInit {
 
   committees: Committee[] = []; // TODO: SEPARATE?
   x: number;
@@ -22,6 +22,9 @@ export class CommitteesComponent implements OnInit {
     private committeesService: CommitteesService,
     private location: Location,
   ) {}
+
+  ngAfterViewInit() {
+  }
 
   ngOnInit(): void {
     this.getCommittees();

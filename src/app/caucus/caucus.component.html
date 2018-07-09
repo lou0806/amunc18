@@ -6,6 +6,13 @@
           <h2>States Database</h2>
           <p>Add your Member States here</p>
           <app-member-search></app-member-search>
+        <div>
+          <p>Add Custom states here (currently does not save)</p>
+          <input #memberName />
+          <button (click)="add(memberName.value); memberName.value=''">
+            add
+          </button>
+        </div>
           <ul class="members"  style="overflow:scroll;   height:400px;">
             <li *ngFor="let member of members">
               <button class = "addMember"

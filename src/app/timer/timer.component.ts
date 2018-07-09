@@ -13,8 +13,16 @@ import { MAT_DIALOG_DATA } from '@angular/material'
 export class TimerComponent implements OnInit, OnDestroy {
 
   @Input() seconds: number;
+  @Input() type: string;
   intervalId = 0;
   message = '';
+  initialSeconds = this.seconds;
+
+  constructor (
+    private caucusComponent: CaucusComponent,
+    private logService: LogService,
+    private passService: PassSecondsService,
+  ) {}
 
   clearTimer() {
     clearInterval(this.intervalId);
@@ -29,13 +37,31 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   start() {
+    this.initialSeconds = this.seconds;
     this.countDown();
   }
 
   stop() {
     this.clearTimer();
-    this.message = `Holding at T-${this.seconds} seconds`;
   }
+
+  reset() {
+    this.resetSeconds();
+  }
+
+  private resetSeconds() {
+    this.seconds = 20;
+  }
+ /* skipSpeaker() {
+    this.caucusComponent.logTimer(this.varSpeaker);
+    if (this.type === 'Speaker List') {
+      this.caucusComponent.removeSpeakerTop();
+    } else if (this.type === 'Moderated Caucus') {
+      this.caucusComponent.removeCaucusTop();
+    }
+    // TODO: Log the speaker LIVE, ALSO NOT SURE HOW TO INTERACT WITH MOD CAUC
+    this.speakerSeconds = this.varSpeaker;
+  }*/
 
   private countDown() {
     this.clearTimer();
@@ -45,7 +71,7 @@ export class TimerComponent implements OnInit, OnDestroy {
         this.message = 'TIME UP';
       } else {
         if (this.seconds < 0) {
-          this.seconds = 10;
+          this.seconds = 20;
         } // reset
         this.message = `T-${this.seconds} seconds and counting`;
       }

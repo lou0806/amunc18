@@ -77,6 +77,9 @@ nav a.active {
 .dropdown:hover .dropbtn {color: #00D1C7;
   background-color: #0A0D2E}
 
+#headhead{
+  background-color: #0A0D2E;
+}
 /*
 .cdk-overlay-container{
   z-index: 9999999000000000;

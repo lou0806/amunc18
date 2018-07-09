@@ -135,6 +135,15 @@ export class CaucusComponent implements OnInit {
     }
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.memberService.addMember({ name } as Member)
+      .subscribe(member => {
+        this.members.push(member);
+      });
+  }
+
 /*
   openBigTimer() {
     const dialog = this.dialog.open(TimerParentComponent, {

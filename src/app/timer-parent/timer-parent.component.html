@@ -44,7 +44,7 @@
     <br>
     <button (click)="speakerTime.start()">Start</button>
     <button (click)="speakerTime.stop()">Stop</button>
-    <button (click)="skipSpeaker()">Skip</button> <!-- TODO: FIX -->
+    <button (click)="speakerTime.reset()">Reset</button> <!-- TODO: FIX -->
     <div class="seconds">{{convertSeconds(speakerTime.seconds)}}</div>
     <app-cheap-timer-child #speakerTime [seconds]="speakerTimeInt"></app-cheap-timer-child>
     <br>
