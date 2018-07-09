@@ -3,7 +3,7 @@ import { CaucusComponent } from '../caucus/caucus.component';
 import { LogService } from '../log.service';
 import {PassSecondsService} from '../pass-seconds.service';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
-import { MAT_DIALOG_DATA } from '@angular/material'
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-timer',
@@ -50,7 +50,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   private resetSeconds() {
-    this.seconds = 20;
+    this.seconds = 200;
   }
  /* skipSpeaker() {
     this.caucusComponent.logTimer(this.varSpeaker);
@@ -69,11 +69,8 @@ export class TimerComponent implements OnInit, OnDestroy {
       this.seconds -= 1;
       if (this.seconds === 0) {
         this.message = 'TIME UP';
-      } else {
-        if (this.seconds < 0) {
-          this.seconds = 20;
-        } // reset
-        this.message = `T-${this.seconds} seconds and counting`;
+      } else if (this.seconds < 0) {
+        this.seconds = 200;
       }
     }, 1000);
   }

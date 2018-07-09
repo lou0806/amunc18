@@ -32,6 +32,9 @@ export class TimerParentComponent /*implements AfterViewInit*/ {
   caucusTimeString: string;
   speakerTimeString: string;
 
+  timeSubmitted: number;
+  speakerTimeSubmitted: number;
+
   constructor(
     public dialog: MatDialog,
     private caucusComponent: CaucusComponent,
@@ -56,11 +59,21 @@ export class TimerParentComponent /*implements AfterViewInit*/ {
   }
 
   submitSpeakerTime(time: number): number {
+    this.speakerTimeSubmitted = time;
     return time;
   }
 
   submitTime(time: number): number {
+    this.timeSubmitted = time;
     return time;
+  }
+
+  resetSpeakerTime() {
+    this.speakerTimeInt = this.speakerTimeSubmitted;
+  }
+
+  resetTime() {
+    this.caucusTimeInt = this.timeSubmitted;
   }
 
   convertSeconds(time: number): string {

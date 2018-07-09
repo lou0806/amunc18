@@ -25,6 +25,8 @@
     <br>
     <button (click)="caucusTime.start()">Start</button>
     <button (click)="caucusTime.stop()">Stop</button>
+    <button (click)="resetTime()">Reset</button> <!-- TODO: FIX -->
+    <button (click)="caucusTime.reset()">Reset Alt</button>
     <div class="seconds">{{convertSeconds(caucusTime.seconds)}}</div>
     <app-cheap-timer-child #caucusTime [seconds]="caucusTimeInt"></app-cheap-timer-child>
   </div>
@@ -44,7 +46,7 @@
     <br>
     <button (click)="speakerTime.start()">Start</button>
     <button (click)="speakerTime.stop()">Stop</button>
-    <button (click)="speakerTime.reset()">Reset</button> <!-- TODO: FIX -->
+    <button (click)="resetSpeakerTime()">Reset</button> <!-- TODO: FIX -->
     <div class="seconds">{{convertSeconds(speakerTime.seconds)}}</div>
     <app-cheap-timer-child #speakerTime [seconds]="speakerTimeInt"></app-cheap-timer-child>
     <br>
